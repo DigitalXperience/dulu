@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DuluController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +14,15 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Route::get('/users', [dulucontroller::class, 'listeUser']);
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('.index');
+});
+Route::get('/login',function () {
+    return view('.login');
+});
+Route::get('/login/registration', [DuluController::class,'registration']);
+Route::get('/accueil',function () {
+    return view('.accueil');
 });
