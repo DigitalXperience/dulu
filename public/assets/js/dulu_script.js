@@ -64,19 +64,19 @@ function checkEmpty() {
 }
 
 //! submit the email address
-/* form.addEventListener("submit", (e) => {
+form.addEventListener("submit", (e) => {
   if (emailId.value.match(mailRegex)) {
     e.preventDefault();
     form.innerHTML = `<p style="font-size: 2rem; font-weight: 500; color: rgb(118, 167, 63);">Subscribed! 🎉</p>`;
      // setTimeout("location.reload(true);", 2000);
-    setTimeout(() => { 
+    /* setTimeout(() => { 
       window.location.href = "#card-container";
-}, 1700);
+}, 1700); */
   } else {
     e.preventDefault();
     alert("Oops! Please check your email");
   }
-}); */
+});
 
 //! typing animation for the placeholder
 let i = 0;
