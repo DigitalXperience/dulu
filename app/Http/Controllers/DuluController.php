@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\userliste;
+use Illuminate\Contracts\Session\Session;
 
 class DuluController extends Controller
 {
@@ -29,6 +30,8 @@ class DuluController extends Controller
 
         $user->save();
 
+
+        session(['user_name'=>$user->NOM]);
         return redirect('/accueil');
 
     }
