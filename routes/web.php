@@ -19,7 +19,7 @@ use App\Http\Controllers\DuluController;
 Route::get('/', function () {
     return view('.index');
 });
-Route::get('/login',function () {
+Route::post('/login',function () {
     return view('.login');
 });
 Route::get('/login/registration', [DuluController::class,'registration']);

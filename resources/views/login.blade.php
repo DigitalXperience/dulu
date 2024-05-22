@@ -36,6 +36,7 @@
 											<div class="card-block">    
 												<h2 class="white">Connexion</h2>
                                                 <form class="needs-validation" action="/login/registration" methode="get">
+                                                    @csrf
                                                     <div class="form-row">
                                                         <div class="col-md-4 mb-3">
                                                         <label for="validationTooltip01">Nom</label>
@@ -54,7 +55,7 @@
                                                         </div>
                                                         <div class="col-md-4 mb-3">
                                                         <label for="validationTooltip01">Parent id</label>
-                                                        <input type="text" class="form-control" id="parent_id" name="parent_id" value="{{$_GET['parent_id']}}" readonly="readonly">
+                                                        <input type="text" class="form-control" id="parent_id" name="parent_id" value="{{$_POST['parent_id']}}" readonly="readonly">
                                                         <div class="valid-tooltip">
                                                             Looks good!
                                                         </div>
@@ -67,7 +68,7 @@
                                                             <div class="input-group-prepend">
                                                             <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
                                                             </div>
-                                                            <input type="text" class="form-control" id="new_user_email" name="new_user_email" value="{{$_GET['email_address']}}" aria-describedby="validationTooltipUsernamePrepend" required>
+                                                            <input type="text" class="form-control" id="new_user_email" name="new_user_email" value="{{$_POST['email_address']}}" aria-describedby="validationTooltipUsernamePrepend" required>
                                                             <div class="invalid-tooltip">
                                                             Please choose a unique and valid username.
                                                             </div>
