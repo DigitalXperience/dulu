@@ -21,10 +21,13 @@ class DuluController extends Controller
         ]);
 
         $user = new userliste();
-        $user->NOM = "'$request->new_user_nom'";
-        $user->PRENOM = "'$request->new_user_prenom'";
-        $user->EMAIL = "'$request->new_user_email'";
+        $user->NOM = "$request->new_user_nom";
+        $user->PARENT_ID = "$request->parent_id";
+        $user->PRENOM = "$request->new_user_prenom";
+        $user->EMAIL = "$request->new_user_email";
         $user->TELEPHONE = $request->new_user_telephone;
+        $user->STATUT = "EN ATTENTE";
+
         $user->updated_at = now();
         $user->created_at  = now();
 
@@ -32,7 +35,32 @@ class DuluController extends Controller
 
 
         session(['user_name'=>$user->NOM]);
+        session(['user_id'=>$user->id]);
+
         return redirect('/accueil');
 
+    }
+
+    public function invitations(){
+        
+        $query =  userliste::where('PARENT_ID', session('user_id'));
+            
+        $rows = $query->get();
+        return view('.invitations',compact('rows'));
+    }
+
+    public function arbre(){
+        
+        $query =  userliste::where('PARENT_ID', session('user_id'));
+            
+        $rows = $query->get();
+        return view('.arbre',compact('rows'));
+    }
+
+
+    public function logout(){
+        session()->invalidate();
+        session()->regenerateToken();
+        return redirect('https://www.google.com');
     }
 }

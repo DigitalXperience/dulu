@@ -26,3 +26,7 @@ Route::get('/login/registration', [DuluController::class,'registration']);
 Route::get('/accueil',function () {
     return view('.accueil');
 });
+
+Route::get('/logout', [DuluController::class,'logout']);
+Route::get('/invitations', [DuluController::class,'invitations']);
+Route::get('/arbre', [DuluController::class,'arbre']);

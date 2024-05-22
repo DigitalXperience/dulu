@@ -19,7 +19,7 @@
         </p>
         <form id="form" action="/login" method="post">
           @csrf
-          <input type="hidden" name="parent_id" id="parent_id" value="{{$_GET['ss']}}">
+          <input type="hidden" name="parent_id" id="parent_id" value="{{$_GET['ref']}}">
           <input
             type="email"
             id="email-id"

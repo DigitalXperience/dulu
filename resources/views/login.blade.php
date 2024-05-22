@@ -54,7 +54,7 @@
                                                         </div>
                                                         </div>
                                                         <div class="col-md-4 mb-3">
-                                                        <label for="validationTooltip01">Parent id</label>
+                                                        <label for="validationTooltip01">Parent Indentification</label>
                                                         <input type="text" class="form-control" id="parent_id" name="parent_id" value="{{$_POST['parent_id']}}" readonly="readonly">
                                                         <div class="valid-tooltip">
                                                             Looks good!
