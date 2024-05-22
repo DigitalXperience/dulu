@@ -32,17 +32,22 @@
         </div>
         <div class="container-body">
             <table id="table">
+                <tr>
+                  <th>Membre</th>
+                  <th>Date</th>
+                  <th>Status</th>
+                </tr>
                     @php
                     $i=1
                     @endphp
-                    @foreach ($rows as $user )
+                @foreach ($rows as $user )
                     <tr>
                         <td>{{$user->NOM}} {{$user->PRENOM}}</td>
                         <td>{{$user->created_at}}</td>
                         <td>{{$user->STATUT}}</td>
                     </tr>
-                    @endforeach
-              </table>
+                @endforeach
+            </table>
         </div>
     </div>
     <div class="modal" id="modal">
