@@ -30,3 +30,6 @@ Route::get('/accueil',function () {
 Route::get('/logout', [DuluController::class,'logout']);
 Route::get('/invitations', [DuluController::class,'invitations']);
 Route::get('/arbre', [DuluController::class,'arbre']);
+Route::get('/parametres', [DuluController::class,'parametres']);
+Route::post('/parametres/action', [DuluController::class,'update']);
+

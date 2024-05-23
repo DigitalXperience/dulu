@@ -12,6 +12,9 @@ class DuluController extends Controller
     public function login(){
         return view('.login');
     }
+
+    //page d'inscription
+
     public function registration(Request $request){
         $request->validate([
             'new_user_nom' => 'required',
@@ -41,6 +44,8 @@ class DuluController extends Controller
 
     }
 
+
+    // page invitation
     public function invitations(){
         
         $query =  userliste::where('PARENT_ID', session('user_id'));
@@ -62,5 +67,34 @@ class DuluController extends Controller
         session()->invalidate();
         session()->regenerateToken();
         return redirect('https://www.google.com');
+    }
+    public function parametres(){
+        $user = userliste::find(session('user_id'));
+        return view('parametres',compact('user'));
+        
+    }
+
+    public function update(Request $request){
+        
+        $request->validate([
+            'nom' => 'required',
+            'prenom'  => 'required',
+            'email'  => 'required',
+            'number'  => 'required',
+
+        ]);
+
+        $user = userliste::find(session('user_id'));
+        $user->NOM = "$request->nom";
+        $user->PRENOM = "$request->prenom";
+        $user->EMAIL = "$request->email";
+        $user->TELEPHONE = $request->number;
+        $user->update();
+
+        session(['user_name'=>$user->NOM]);
+        session(['user_id'=>$user->id]);
+
+        return redirect('/accueil');
+        
     }
 }
