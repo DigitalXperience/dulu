@@ -13,11 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('invitation', function (Blueprint $table) {
-            $table->id();
-            $table->id();
-
-            $table->timestamps();
+        Schema::table('userlistes', function (Blueprint $table) {
+            $table->text('PARENT_ID')->nullable()->after('id');
+            $table->text('STATUT')->nullable()->after('TELEPHONE');
         });
     }
 
@@ -28,6 +26,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('invitation');
+        Schema::table('userlistes', function (Blueprint $table) {
+            //
+        });
     }
 };

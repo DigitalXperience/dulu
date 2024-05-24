@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DuluController;
+use App\Http\Controllers\TwilioSMSController;
 
 
 /*
@@ -32,4 +33,5 @@ Route::get('/invitations', [DuluController::class,'invitations']);
 Route::get('/arbre', [DuluController::class,'arbre']);
 Route::get('/parametres', [DuluController::class,'parametres']);
 Route::post('/parametres/action', [DuluController::class,'update']);
+Route::get('/sendSMS', [DuluController::class, 'sendSMS']);
 

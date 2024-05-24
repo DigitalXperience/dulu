@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\userliste;
 use Illuminate\Contracts\Session\Session;
+use Exception;
+use Twilio\Rest\Client;
 
 class DuluController extends Controller
 {
@@ -40,7 +42,7 @@ class DuluController extends Controller
         session(['user_name'=>$user->NOM]);
         session(['user_id'=>$user->id]);
 
-        return redirect('/accueil');
+        return redirect('/sendSMS');
 
     }
 
@@ -96,5 +98,31 @@ class DuluController extends Controller
 
         return redirect('/accueil');
         
+    }
+
+    public function sendSMS()
+    {
+        $receiverNumber = "+237659747733";
+        $message = "hello world c'est ludger";
+  
+        try {
+  
+            $account_sid = getenv("TWILIO_SID");
+            $auth_token = getenv("TWILIO_TOKEN");
+            $twilio_number = getenv("TWILIO_FROM");
+  
+            $client = new Client($account_sid, $auth_token);
+            $client->messages->create($receiverNumber, [
+                'from' => $twilio_number, 
+                'body' => $message]);
+  
+            dd('SMS Sent Successfully.');
+
+            
+  
+        } catch (Exception $e) {
+            dd("Error: ". $e->getMessage());
+        }
+        return redirect('/accueil');
     }
 }
