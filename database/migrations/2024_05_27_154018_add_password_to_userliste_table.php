@@ -13,11 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('invitation', function (Blueprint $table) {
-            $table->id();
-            $table->id();
-
-            $table->timestamps();
+        Schema::table('userlistes', function (Blueprint $table) {
+            $table->text('password')->nullable()->after('EMAIL');
         });
     }
 
@@ -28,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('invitation');
+        Schema::table('userliste', function (Blueprint $table) {
+            //
+        });
     }
 };

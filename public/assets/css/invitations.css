@@ -121,6 +121,16 @@ body {
   opacity: 0.85;
 }
 
+#stats{
+  border-radius: 10px;
+    background-color: greenyellow;
+    font-weight: bold;
+    padding: 15px;
+    margin: 5px;
+    display: block;
+}
+
+
 @keyframes animate {
   from {
     transform: translateY(-20px);

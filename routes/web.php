@@ -23,15 +23,31 @@ Route::get('/', function () {
 Route::post('/login',function () {
     return view('.login');
 });
+Route::get('/log',function () {
+    return view('.log');
+});
 Route::get('/login/registration', [DuluController::class,'registration']);
+Route::post('/log/verification', [DuluController::class,'verification']);
+
 Route::get('/accueil',function () {
     return view('.accueil');
 });
 
 Route::get('/logout', [DuluController::class,'logout']);
+
+Route::get('/commander', [DuluController::class,'commander']);
 Route::get('/invitations', [DuluController::class,'invitations']);
 Route::get('/arbre', [DuluController::class,'arbre']);
 Route::get('/parametres', [DuluController::class,'parametres']);
 Route::post('/parametres/action', [DuluController::class,'update']);
-Route::get('/sendSMS', [DuluController::class, 'sendSMS']);
+Route::get('/registration/verification', [DuluController::class, 'registrationVerification']);
+Route::post('/registration/verification/action', [DuluController::class,'registrationverificationaction']);
 
+
+
+Route::get('/admin/accueil',function () {
+    return view('admin.accueil');
+});
+
+Route::get('/admin/invitations',[DuluController::class,'invitationsListe']);
+Route::get('/admin/active/{id}',[DuluController::class,'invitationsAccepte']);
