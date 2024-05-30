@@ -59,10 +59,10 @@
                             <div class="media-content">
                                 <div class="content">
                                     <p>
-                                        <strong>Package for John Smith Delivered</strong>
+                                        <strong>Package for {{$userCommande->NOM}} </strong>
                                         <br>
-                                        <small>Boston - West Palm Beach | Tracking ID:
-                                            <strong>90872373904439</strong>
+                                        <small>{{$userCommande->USER_TELEPHONE}} | Tracking ID:
+                                            <strong>{{$userCommande->id}}</strong>
                                         </small>
                                     </p>
                                 </div>
@@ -70,32 +70,35 @@
                             <div class="media-right">
                                 <div class="tags has-addons">
                                     <span class="tag is-light">Status:</span>
-                                    <span class="tag is-delivered">Delivered</span>
+                                    <span class="tag is-delivered">{{$userCommande->DILIVARY_STATUS}}</span>
                                 </div>
                             </div>
                         </article>
-                        <article class="media order shadow">
-                            <figure class="media-left">
-                                <i class="fas fa-box"></i>
-                            </figure>
-                            <div class="media-content">
-                                <div class="content">
-                                    <p>
-                                        <strong>Package for Jane Doe Dispatched</strong>
-                                        <br>
-                                        <small>Los Angeles - Shenzhen | Tracking ID:
-                                            <strong>937347947904439</strong>
-                                        </small>
-                                    </p>
+                        @if (isset($childCommande))
+                            <article class="media order shadow">
+                                <figure class="media-left">
+                                    <i class="fas fa-box"></i>
+                                </figure>
+                                <div class="media-content">
+                                    <div class="content">
+                                        <p>
+                                            <strong>Package for {{$childCommande->NOM}} (child) </strong>
+                                            <br>
+                                            <small>{{$childCommande->USER_TELEPHONE}} | Tracking ID:
+                                                <strong>{{$childCommande->id}}</strong>
+                                            </small>
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="media-right">
-                                <div class="tags has-addons">
-                                    <span class="tag is-light">Status:</span>
-                                    <span class="tag is-success">In Transit</span>
+                                <div class="media-right">
+                                    <div class="tags has-addons">
+                                        <span class="tag is-light">Status:</span>
+                                        <span class="tag is-success">{{$childCommande->DILIVARY_STATUS}}</span>
+                                    </div>
                                 </div>
-                            </div>
-                        </article>
+                            </article>
+                        @endif
+                       
                     </div>
                 </section>
                 <span class="heading">Stats</span>
@@ -103,19 +106,19 @@
                     <div class="tile is-ancestor has-text-centered">
                         <div class="tile is-parent">
                             <article class="tile is-child box">
-                                <p class="title">8365</p>
+                                <p class="title">{{$dilivadRows}}</p>
                                 <p class="subtitle">Total Deliveries</p>
                             </article>
                         </div>
                         <div class="tile is-parent">
                             <article class="tile is-child box">
-                                <p class="title">2172</p>
+                                <p class="title">{{$selectedRows}}</p>
                                 <p class="subtitle">Products</p>
                             </article>
                         </div>
                         <div class="tile is-parent">
                             <article class="tile is-child box">
-                                <p class="title">24</p>
+                                <p class="title">{{$openRows}}</p>
                                 <p class="subtitle">Open Orders</p>
                             </article>
                         </div>

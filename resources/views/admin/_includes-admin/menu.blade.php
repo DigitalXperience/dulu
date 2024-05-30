@@ -19,8 +19,8 @@
                         </i>&nbsp; Mon Arbre</a>
                     <!--<a class="navbar-item" href="#">
                         <i class="fa fa-star"></i>&nbsp; Upgrade</a>-->
-                    <a class="navbar-item" href="#">
-                        <i class="fa fa-list"></i>&nbsp; Mes commandes</a>
+                    <a class="navbar-item" href="commandes">
+                        <i class="fa fa-list"></i>&nbsp; Les commandes</a>
                     <!-- <a class="navbar-ite" href="admin/parametres">
                         <i class="fa fa-cog"></i>&nbsp; Paramètres</a> -->
                 </div>

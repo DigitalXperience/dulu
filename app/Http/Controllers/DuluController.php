@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\userliste;
 use App\Models\User;
-
+use App\Models\commande;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\sendMail;
 use Illuminate\Contracts\Session\Session;
 use Exception;
 use Twilio\Rest\Client;
@@ -19,12 +22,29 @@ class DuluController extends Controller
 
     //function to login
     public function verification(Request $request){
-        $user = User::where("name",$request->input('user_nom'))->where("password",$request->input('password'));
+
+
+        $user = userliste::where("EMAIL",$request->input('user_nom'))->where("password",$request->input('password'));
+        $admin = $user->first();
+        session(['user_parent_id'=>$admin->PARENT_ID]);
+        session(['user_telephone_number'=>$admin->TELEPHONE]);
+        session(['user_email'=>$admin->EMAIL]);
+        session(['user_name'=>$admin->NOM]);
+        session(['user_id'=>$admin->id]);
+        return redirect('/accueil');
+
+
+
+
+
+
+
+        /* $user = User::where("name",$request->input('user_nom'))->where("password",$request->input('password'));
         $admin = $user->first();
         session(['user_name'=>$admin->name]);
         session(['user_id'=>$admin->id]);
-
-        return redirect('/admin/accueil');
+        $this->sendMail();
+        return redirect('/admin/accueil'); */
     }
 
 
@@ -57,16 +77,11 @@ class DuluController extends Controller
         $user->STATUT = "EN ATTENTE";
         $user->updated_at = now();
         $user->created_at  = now();
-
-
         $code = $this->generateRandomString();
         $user->password = $code;
-        $message = 'hey '.$user->PRENOM.' your verification code and password is '.$code;
-
+        $message = $user->PRENOM.' '.$user->PRENOM.' your verification code and password is '.$code;
         $this->sendSMS($user->TELEPHONE, $message); 
-
         $user->save();
-
         session(['verification_code'=>$code]);
         session(['user_name'=>$user->NOM]);
         session(['user_id'=>$user->id]);
@@ -90,6 +105,27 @@ class DuluController extends Controller
         }
 
     }
+ 
+    public function accueil(){
+        $selectedRows = commande::where('USER_ID', session('user_id'))->count();
+        $dilivadRows = commande::where('USER_ID', session('user_id'))->where('DILIVARY_STATUS', 'LIVRAIE')->count();
+        $openRows = commande::where('USER_ID', session('user_id'))->where('DILIVARY_STATUS', 'EN ATTENTE')->count();
+
+        // Assuming you have a 'users' table and a 'posts' table
+        $userCommande = DB::table('commandes')
+                     ->join('userlistes', 'commandes.USER_ID', '=', 'userlistes.id')
+                     ->select('commandes.*', 'userlistes.NOM')
+                     ->orderByDesc('created_at')
+                     ->first();
+        $childCommande = DB::table('commandes')
+                     ->join('userlistes', 'commandes.PARENT_ID', '=', 'userlistes.id')
+                     ->select('commandes.*', 'userlistes.NOM')
+                     ->where('commandes.PARENT_ID',session('user_id'))
+                     ->orderByDesc('created_at')
+                     ->first();
+        return view('.accueil',compact('selectedRows','userCommande','childCommande','openRows','dilivadRows'));
+    }
+
 
     // function to show the diffrente invitation made by a user
     public function invitations(){
@@ -140,7 +176,6 @@ class DuluController extends Controller
             'number'  => 'required',
 
         ]);
-
         $user = userliste::find(session('user_id'));
         $user->NOM = "$request->nom";
         $user->PRENOM = "$request->prenom";
@@ -159,6 +194,12 @@ class DuluController extends Controller
     public function invitationsListe(){
         $rows = userliste::get();
         return view('admin.invitations',compact('rows'));
+    }
+
+    //function to show the diffrent commandes made by the users of the web site to the admin
+    public function commandesListe(){
+        $commandes = userliste::get();
+        return view('admin.commandes',compact('commandes'));
     }
 
     //function to update users status
@@ -204,6 +245,85 @@ class DuluController extends Controller
         }
         return $randomString;
     }
+
+
+    //function to send mail 
+    public function sendMail(){
+        $to = "ngapoucheludger@gmail.com";
+        $subject = "My subject";
+        $txt = "Hello world!";
+        $headers = "ngapoucheludger@gmail.com" ;
+
+       return mail($to,$subject,$txt,$headers);
+    }
+
+    public function commandesaveHaut(Request $request){
+        $request->validate([
+            'telephone' => 'required',
+            'number'  => 'required',
+        ]);
+        $parent=userliste::where('id',session('user_parent_id'))->first();
+        $user = new commande();
+        $user->PARENT_ID = session('user_parent_id');
+        $user->USER_ID = session('user_id');
+        $user->PRODUCT_NAME = $request->product_name;
+        $user->PRODUCT_QUANTITY = $request->number;
+        $user->USER_TELEPHONE = $request->telephone;
+        $user->PRODUCT_PRICE = $request->total;
+        $user->DILIVARY_STATUS = "EN ATTENTE";
+        $user->updated_at = now();
+        $user->created_at  = now();
+        $user->CREATION_DATE = now();
+        $subject = 'DULU : Nouvelle commande';
+        $content = 'Votre filleul '.session('user_name').' a fais une commande merci pour votre confiance';
+        Mail::to($parent->PRENOM)->send(new sendMail($subject, $content));
+        
+        $user->save();
+
+        return redirect('/commander');
+
+
+    }
+
+
+    public function mescommandes(){
+        $request = commande::where('USER_ID',session('user_id'));
+        $commande = $request->get();
+        return view('.mescommandes',compact('commande'));
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*     public function sendSMS()
     {
         $receiverNumber = "+237659747733";

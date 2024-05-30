@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DuluController;
 use App\Http\Controllers\TwilioSMSController;
+use App\Mail;
 
 
 /*
@@ -29,19 +30,21 @@ Route::get('/log',function () {
 Route::get('/login/registration', [DuluController::class,'registration']);
 Route::post('/log/verification', [DuluController::class,'verification']);
 
-Route::get('/accueil',function () {
-    return view('.accueil');
-});
+Route::get('/accueil',[DuluController::class,'accueil']);
 
 Route::get('/logout', [DuluController::class,'logout']);
 
 Route::get('/commander', [DuluController::class,'commander']);
+Route::get('/mescommandes', [DuluController::class,'mescommandes']);
+
 Route::get('/invitations', [DuluController::class,'invitations']);
 Route::get('/arbre', [DuluController::class,'arbre']);
 Route::get('/parametres', [DuluController::class,'parametres']);
 Route::post('/parametres/action', [DuluController::class,'update']);
 Route::get('/registration/verification', [DuluController::class, 'registrationVerification']);
 Route::post('/registration/verification/action', [DuluController::class,'registrationverificationaction']);
+
+Route::post('/commande/saveHaut', [DuluController::class,'commandesaveHaut']);
 
 
 
@@ -51,3 +54,5 @@ Route::get('/admin/accueil',function () {
 
 Route::get('/admin/invitations',[DuluController::class,'invitationsListe']);
 Route::get('/admin/active/{id}',[DuluController::class,'invitationsAccepte']);
+Route::get('/admin/commandes',[DuluController::class,'commandesListe']);
+// Route::get('/sendMail',[Mail::to]);
