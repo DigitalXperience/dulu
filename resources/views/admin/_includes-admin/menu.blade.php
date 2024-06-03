@@ -25,7 +25,7 @@
                         <i class="fa fa-cog"></i>&nbsp; Paramètres</a> -->
                 </div>
                 <div class="navbar-end">
-                    <a class="navbar-item" href="#">
+                    <a class="navbar-item" href="/logout">
                         <i class="fa fa-sign-out"></i>&nbsp; Logout</a>
                 </div>
             </div>

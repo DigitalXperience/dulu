@@ -10,7 +10,8 @@
 <link rel='stylesheet' href='{{asset('https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css')}}'>
 <link rel="stylesheet" href="{{asset('assets/css/dulu_member_style.css')}}">
 
-<link rel="stylesheet" href="{{asset('assets/css/invitations.css')}}">
+<link rel="stylesheet" href="{{asset('assets/css/commande.css')}}">
+
 
 </head>
 <body>
@@ -21,10 +22,11 @@
 
     <!-- partial:index.partial.html -->
 <div class="container2">
-        
+       
         <div class="container-body">
-            <table id="table">
+            <table id="table" style="overflow-x:auto;">
                 <tr>
+                  <th>User Name</th>
                   <th>Product Name</th>
                   <th>Product Quantity</th>
                   <th>Product unic price</th>
@@ -32,6 +34,7 @@
                   <th>Status</th>
                   <th>Numero de telephone</th>
                   <th>Date de creation</th>
+                  <th>Action</th>
 
                 </tr>
                     @php
@@ -40,19 +43,55 @@
                 @foreach ($commandes as $user )
                     @php
                     $price=$user->PRODUCT_PRICE*$user->PRODUCT_QUANTITY
+                    
                     @endphp
+                    @switch ($user->DILIVARY_STATUS) 
+                        @case ('1')
+                            @php
+                                $Status='EN ATTENTE'    
+                            @endphp
+                           
+                            @break
+                        @case ("2"):
+                            @php
+                                $Status='EN COURS'    
+                            @endphp
+                            @break
+                        @case ("3"):
+                            @php
+                                $Status='LIVRAIE'    
+                            @endphp
+                            @break
+                        @default
+                            @php
+                                $Status='ANNULE'    
+                            @endphp     
+                    @endswitch
                     <tr>
+                        <td>{{$user->NOM}}</td>
                         <td>{{$user->PRODUCT_NAME}}</td>
                         <td>{{$user->PRODUCT_QUANTITY}}</td>
                         <td>{{$user->PRODUCT_PRICE}}</td>  
                         <td>{{$price}}</td>
-                        <td>{{$user->DILIVARY_STATUS}}</td>
+                        <td>{{$Status}}</td>
                         <td>{{$user->USER_TELEPHONE}}</td>
 
                         <td>{{$user->created_at}}</td>
+                        @if (($user->DILIVARY_STATUS==1)or($user->DILIVARY_STATUS==2))
+                            <td> <a href="/admin/nextCommande/{{$user->id}}"><i class="fa fa-arrow-right "></i></a> &nbsp;<a href="/admin/stopCommande/{{$user->id}}"><i class="fa fa-times"></i></a> &nbsp;</td>
+                            
+                        @endif
                     </tr>
                 @endforeach
             </table>
+
+
+
+            @if (session('status'))
+                <script>
+                    alert("{{session('status')}}");
+                </script>
+            @endif
         </div>
     </div>
 </body>

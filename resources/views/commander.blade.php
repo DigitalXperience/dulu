@@ -5,11 +5,12 @@
   <title>MyDULU WEAR - Dashboard</title>
   <script src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js')}}"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{{asset('assets/css/commande_style.css')}}">
+
 <link rel="stylesheet" href="{{asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')}}" />
 <link rel="stylesheet" href="{{asset('https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css')}}">
 <link rel='stylesheet' href='{{asset('https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css')}}'>
 <link rel="stylesheet" href="{{asset('assets/css/dulu_member_style.css')}}">
-<link rel="stylesheet" href="{{asset('assets/css/commande_style.css')}}">
 <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
 <!-- owl.carousel css -->
 <link rel="stylesheet" href="{{asset('assets/css/owl.carousel.css')}}">
@@ -22,11 +23,6 @@
 
 
 </head>
-<body>
-<!-- partial:index.partial.html -->
-<!-- Check out the dark themed version on my github: https://github.com/emkelley -->
-
-
 <body>
     
     @include('_includes.topnav')
@@ -153,7 +149,7 @@
                     
 
                     <h2>Confimation de livrasion</h2>
-                    <div class="form-group col-xs-12 col-sm-6 col-md-6 m-5">
+                    <div class="form-group col-xs-12 col-sm-6 col-md-6">
                         <label for="total">Unique Amount (*FCFA)</label>
                         <div class="input-group">
                             <div class="input-group-addon">CFA</div>
@@ -173,7 +169,7 @@
                     <div class="form-group col-md-6 col-sm-12 col-xs-12 m-5">
 
                         <label for="number"> Nombre d'article</label><br>
-                        <input type="number" class="form-control" name="number" id="number" min="0" value="1"></input>  
+                        <input type="number" class="form-control nombre" name="number" id="number" min="0" value="1"></input>  
                         <button type="button" value="minus"  class="btn btn-warning"  onclick="updateAmount(this);">
                             -  
                         </button>

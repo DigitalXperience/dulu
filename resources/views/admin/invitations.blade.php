@@ -28,12 +28,10 @@
                         {{session('status')}}   
                     </div>
                 @endif
-                <h2>Suivie des invitations</h2>
-                <p>Vous pouvez envoyer des invitations aussi</p>
+                <h2>Suivie les invitations</h2>
+                <!--    <p>Vous pouvez envoyer des invitations aussi</p> -->
             </div>
-            <div class="right">
-                <button id="createNew">Envoyer</button>
-            </div>
+            
         </div>
         <div class="container-body">
             
@@ -53,33 +51,21 @@
                             <td>{{$user->created_at}}</td>
                             <td>{{$user->STATUT}}</td>
                             @if ($user->STATUT == 'EN ATTENTE')
-                                <td><button id="createNew"><a href="active/{{{$user->id}}}" class="btn btn-info">ACTIVE</a></button></td>
+                                <td>
+                                    <a href="refuser/{{{$user->id}}}">
+                                        <i class="fa fa-thumbs-down" aria-hidden="true" style="color: red;font-size: x-large;"></i>
+                                    </a>&nbsp;&nbsp;
+                                    <a href="active/{{{$user->id}}}">
+                                        <i class="fa fa-thumbs-up" aria-hidden="true" style="color: green;font-size: x-large;"></i>
+                                    </a>
+                                    
+                                </td>
                             @endif
                             
                         </tr>
                     @endforeach
             </table>
-           
-        </div>
-    </div>
-    <div class="modal" id="modal">
-        <div class="modal-container">
-            <form id="form" class="form">
-                <h2>Envoyer une invitation</h2>
-                <div class="form-control">
-                    <label for="name">Votre lien</label>
-                    <input type="text" id="name" value="http://localhost:8000/?ref={{session('user_id')}}" required disabled>
-                </div>
-                <div class="form-control">
-                    <label for="domain">Domain</label>
-                    <input type="number" id="domain" placeholder="Please enter a domain number..." autocomplete="off" required>
-                </div>
-                <div class="form-control">
-                    <label for="status">Status</label>
-                    <input type="text" id="status" placeholder="Please enter the status..." autocomplete="off" required>
-                </div>
-                <button type="submit">Copiez le lien</button>
-            </form>
+            {{ $rows->links('pagination::bootstrap-4') }}
         </div>
     </div>
 </body>

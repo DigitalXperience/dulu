@@ -33,32 +33,30 @@
 											<img alt="element 06" class="mb-1" src="{{asset('assets/img/logo2.png')}}" width="190">
 										</div>
 										<div class="card-body">
-											<div class="card-block">    
+											<div class="card-block">   
+                                            @if (session('status'))
+                                                <div id="stats" style="display: block; color: red;">
+                                                    {{session('status')}}   
+                                                </div>
+                                            @endif 
 												<h2 class="white">Connexion</h2>
                                                 <form class="needs-validation" action="/login/registration" methode="get">
                                                     @csrf
                                                     <div class="form-row">
                                                         <div class="col-md-4 mb-3">
-                                                        <label for="validationTooltip01">Nom</label>
-                                                        <input type="text" class="form-control" id="new_user_nom" name="new_user_nom" placeholder="Votre nom" required>
-                                                        <div class="valid-tooltip">
-                                                            Looks good!
-                                                        </div>
+                                                            <label for="validationTooltip01">Nom</label>
+                                                            <input type="text" class="form-control" id="new_user_nom" name="new_user_nom" placeholder="Votre nom" required>
                                                         </div>
                                                         
                                                         <div class="col-md-4 mb-3">
-                                                        <label for="validationTooltip02">Prenom</label>
-                                                        <input type="text" class="form-control" id="new_user_prenom" name="new_user_prenom" placeholder="Votre prenom" required>
-                                                        <div class="valid-tooltip">
-                                                            Looks good!
-                                                        </div>
+                                                            <label for="validationTooltip02">Prenom</label>
+                                                            <input type="text" class="form-control" id="new_user_prenom" name="new_user_prenom" placeholder="Votre prenom" required>
+                                                            
                                                         </div>
                                                         <div class="col-md-4 mb-3">
-                                                        <label for="validationTooltip01">Parent Indentification</label>
-                                                        <input type="text" class="form-control" id="parent_id" name="parent_id" value="{{$_POST['parent_id']}}" readonly="readonly">
-                                                        <div class="valid-tooltip">
-                                                            Looks good!
-                                                        </div>
+                                                            <label for="validationTooltip01">Parent Indentification</label>
+                                                            <input type="text" class="form-control" id="parent_id" name="parent_id" value="{{$_POST['parent_id']}}" readonly="readonly">
+                                                            
                                                         </div>
                                                     </div>
                                                     <div class="form-row">
@@ -66,20 +64,16 @@
                                                         <label for="validationTooltipUsername">Email</label>
                                                         <div class="input-group">
                                                             <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
+                                                                <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
                                                             </div>
                                                             <input type="text" class="form-control" id="new_user_email" name="new_user_email" value="{{$_POST['email_address']}}" aria-describedby="validationTooltipUsernamePrepend" required>
-                                                            <div class="invalid-tooltip">
-                                                            Please choose a unique and valid username.
-                                                            </div>
+                                                            
                                                         </div>
                                                         </div>
                                                         <div class="col-md-6 mb-3">
-                                                        <label for="validationTooltip04">Numero de telephone</label>
-                                                        <input type="number" class="form-control" id="new_user_telephone" name="new_user_telephone" placeholder="Votre numero de telephone" required>
-                                                        <div class="invalid-tooltip">
-                                                            Please provide a valid state.
-                                                        </div>
+                                                            <label for="validationTooltip04">Numero de telephone</label>
+                                                            <input type="number" class="form-control" id="new_user_telephone" name="new_user_telephone" placeholder="Votre numero de telephone" required>
+                                                            
                                                         </div>
                                                     </div>
                                                     <button class="btn btn-primary" type="submit">Submit</button>

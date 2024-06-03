@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Mail;
+
 use App\Http\Controllers\DuluController;
 use App\Http\Controllers\TwilioSMSController;
-use App\Mail;
 
 
 /*
@@ -18,41 +19,92 @@ use App\Mail;
 */
 // Route::get('/users', [dulucontroller::class, 'listeUser']);
 
+
+
+//home page index
 Route::get('/', function () {
     return view('.index');
 });
-Route::post('/login',function () {
-    return view('.login');
+
+
+//page to create account
+Route::post('/login',[DuluController::class,'login']);
+
+//page to verify the code that have been send
+Route::get('/verification', function () {
+    return view('.verifiecode');
 });
+
+//page to wait the confirmation
+Route::get('/enattente', function () {
+    return view('.enattente');
+});
+
+
+//page to login as admin
+Route::get('/admin',function () {
+    return view('admin.login');
+});
+
+//page to login as member
 Route::get('/log',function () {
     return view('.log');
 });
+
+
+//registraion operation
 Route::get('/login/registration', [DuluController::class,'registration']);
+
+//login code that is send after an account have been created verifications operations
+Route::post('/verifyCode', [DuluController::class,'verificationCode']);
+
+//login as member verifications operations
 Route::post('/log/verification', [DuluController::class,'verification']);
 
+//login as admin verifications operations
+Route::post('/admin/verification', [DuluController::class,'verificationAdmin']);
+
+
+
+
+///Routes about the member pages
 Route::get('/accueil',[DuluController::class,'accueil']);
-
-Route::get('/logout', [DuluController::class,'logout']);
-
 Route::get('/commander', [DuluController::class,'commander']);
 Route::get('/mescommandes', [DuluController::class,'mescommandes']);
-
 Route::get('/invitations', [DuluController::class,'invitations']);
 Route::get('/arbre', [DuluController::class,'arbre']);
 Route::get('/parametres', [DuluController::class,'parametres']);
 Route::post('/parametres/action', [DuluController::class,'update']);
-Route::get('/registration/verification', [DuluController::class, 'registrationVerification']);
-Route::post('/registration/verification/action', [DuluController::class,'registrationverificationaction']);
 
+
+
+
+
+//to save the user's command
 Route::post('/commande/saveHaut', [DuluController::class,'commandesaveHaut']);
 
 
 
+
+//Routes for registration operations
+/* Route::get('/registration/verification', [DuluController::class, 'registrationVerification']);
+Route::post('/registration/verification/action', [DuluController::class,'registrationverificationaction']); */
+
+
+//// Routes for the admin pages
 Route::get('/admin/accueil',function () {
     return view('admin.accueil');
 });
-
 Route::get('/admin/invitations',[DuluController::class,'invitationsListe']);
 Route::get('/admin/active/{id}',[DuluController::class,'invitationsAccepte']);
+Route::get('/admin/refuser/{id}',[DuluController::class,'invitationsRefuser']);
+
 Route::get('/admin/commandes',[DuluController::class,'commandesListe']);
+Route::get('/admin/nextCommande/{id}',[DuluController::class,'nextCommande']);
+Route::get('/admin/stopCommande/{id}',[DuluController::class,'stopCommande']);
+
 // Route::get('/sendMail',[Mail::to]);
+
+
+//Route lo logout
+Route::get('/logout', [DuluController::class,'logout']);

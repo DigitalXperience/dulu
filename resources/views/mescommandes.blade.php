@@ -1,3 +1,8 @@
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -10,7 +15,7 @@
 <link rel='stylesheet' href='{{asset('https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css')}}'>
 <link rel="stylesheet" href="{{asset('assets/css/dulu_member_style.css')}}">
 
-<link rel="stylesheet" href="{{asset('assets/css/invitations.css')}}">
+<link rel="stylesheet" href="{{asset('assets/css/commande.css')}}">
 
 </head>
 <body>
@@ -40,40 +45,45 @@
                     @php
                     $price=$user->PRODUCT_PRICE*$user->PRODUCT_QUANTITY
                     @endphp
+                    @switch ($user->DILIVARY_STATUS) 
+                        @case ('1')
+                            @php
+                                $Status='EN ATTENTE'    
+                            @endphp
+                            
+                            @break
+                        @case ("2"):
+                            @php
+                                $Status='EN COURS'    
+                            @endphp
+                            @break
+                        @case ("3"):
+                            @php
+                                $Status='LIVRAIE'    
+                            @endphp
+                            @break
+                        @default
+                            @php
+                                $Status='ANNULE'    
+                            @endphp
+                    @endswitch
                     <tr>
                         <td>{{$user->PRODUCT_NAME}}</td>
                         <td>{{$user->PRODUCT_QUANTITY}}</td>
                         <td>{{$user->PRODUCT_PRICE}}</td>  
                         <td>{{$price}}</td>
-                        <td>{{$user->DILIVARY_STATUS}}</td>
+                        <td>{{$Status}}</td>
                         <td>{{$user->USER_TELEPHONE}}</td>
-
                         <td>{{$user->created_at}}</td>
                     </tr>
                 @endforeach
             </table>
+
+
+
+            
         </div>
     </div>
-    <!-- <div class="modal" id="modal">
-        <div class="modal-container">
-            <form id="form" class="form">
-                <h2>Envoyer une invitation</h2>
-                <div class="form-control">
-                    <label for="name">Votre lien</label>
-                    <input type="text" id="name" value="http://localhost:8000/?ref={{session('user_id')}}" required disabled>
-                </div>
-                <div class="form-control">
-                    <label for="domain">Domain</label>
-                    <input type="number" id="domain" placeholder="Please enter a domain number..." autocomplete="off" required>
-                </div>
-                <div class="form-control">
-                    <label for="status">Status</label>
-                    <input type="text" id="status" placeholder="Please enter the status..." autocomplete="off" required>
-                </div>
-                <button type="submit">Copiez le lien</button>
-            </form>
-        </div>
-    </div> -->
 </body>
 
 </html>

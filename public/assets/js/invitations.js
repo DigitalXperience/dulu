@@ -35,3 +35,17 @@ window.addEventListener('click', e => {
         modal.style.display = 'none';
     }
 })
+
+
+// Function to copy text to the clipboard
+function copyToClipboard() {
+    var link = document.getElementById('link').value;
+    navigator.clipboard.writeText(link)
+      .then(() => {
+        console.log('Text copied to clipboard');
+      })
+      .catch((error) => {
+        console.error('Failed to copy text: ', error);
+      });
+  }
+  

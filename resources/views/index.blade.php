@@ -30,7 +30,7 @@
             name="email_address"
             aria-label="email adress"
             placeholder=""
-            oninput="checkEmpty()" />
+            oninput="checkEmpty()" required/>
           <button type="submit" class="btn" aria-label="submit">
             <span>S'inscrire</span>
             <ion-icon name="arrow-forward-outline"></ion-icon>

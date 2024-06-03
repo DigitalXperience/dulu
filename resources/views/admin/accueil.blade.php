@@ -47,7 +47,7 @@
     @include('.admin._includes-admin.menu')
 
     <div class="container">
-        <div class="columns">
+        <!-- <div class="columns">
             <div class="column is-12 main">
                 <span class="heading">Recentes Commandes</span>
                 <section id="order">
@@ -124,7 +124,7 @@
                 <div class="columns">
                 </div>
             </div>
-        </div>
+        </div> -->
         <br>
         <span class="heading">Recent Orders</span>
         <br>

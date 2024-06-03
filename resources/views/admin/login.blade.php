@@ -28,29 +28,34 @@
 						<div class="container-fluid">
 							<div class="row full-height-vh">
 								<div class="col-12 d-flex align-items-center justify-content-center">
-									<div class="card bg-degrade text-center width-800">
+									<div class="card bg-degrade text-center width-800" style="background-image: linear-gradient(180deg, #35FFBD, #0B888E);">
 										<div class="card-img overlap">
 											<img alt="element 06" class="mb-1" src="{{asset('assets/img/logo2.png')}}" width="190">
 										</div>
 										<div class="card-body">
 											<div class="card-block">    
-												<h2 class="white">Se connecter</h2>
+												<h2 class="white">Admin connecter </h2>
                                                 @if (session('status'))
                                                     <div id="stats" style="display: block; color: red;">
                                                         {{session('status')}}   
                                                     </div>
                                                 @endif 
-                                                <form class="needs-validation" action="/log/verification" method="post">
+                                                <form class="needs-validation" action="/admin/verification" method="post">
                                                     @csrf
                                                     <div class="form-row">
-                                                        <div class="col-md-6 mb-3">
-                                                            <label for="validationTooltip01">Email</label>
-                                                            <input type="text" class="form-control" id="user_nom" name="user_nom" placeholder="Votre nom" required>
+                                                        <div class="col-md-12 mb-3">
+                                                        <label for="validationTooltip01">Nom</label>
+                                                        <input type="text" class="form-control" id="user_nom" name="user_nom" placeholder="Votre nom" required>
+                                                        <div class="valid-tooltip">
+                                                            Looks good!
                                                         </div>
-                                                        <div class="col-md-6 mb-3">
-                                                            <label for="validationTooltip01">Password</label>
-                                                            <input type="password" class="form-control" id="parent_id" name="password">
-                                                            
+                                                        </div>
+                                                        <div class="col-md-12 mb-3">
+                                                        <label for="validationTooltip01">Password</label>
+                                                        <input type="password" class="form-control" id="parent_id" name="password">
+                                                        <div class="valid-tooltip">
+                                                            Looks good!
+                                                        </div>
                                                         </div>
                                                     </div>
                                                     <button class="btn btn-primary" type="submit">Submit</button>
