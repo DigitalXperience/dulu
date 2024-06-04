@@ -32,6 +32,7 @@
         <div class="container-body">
             <table id="table">
                 <tr>
+                  <th>Child Name</th>
                   <th>Product Name</th>
                   <th>Product Quantity</th>
                   <th>Product unic price</th>
@@ -71,6 +72,7 @@
                                 @endphp
                         @endswitch
                         <tr>
+                            <td>{{$user->NOM}}</td>
                             <td>{{$user->PRODUCT_NAME}}</td>
                             <td>{{$user->PRODUCT_QUANTITY}}</td>
                             <td>{{$user->PRODUCT_PRICE}}</td>  

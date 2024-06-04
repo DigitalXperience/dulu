@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Email from Laravel</title>
+    <title>Test Email</title>
 </head>
 <body>
-    <h1>{{ $content }}</h1>
+    <h1>{{ $details['title'] }}</h1>
+    <p>{{ $details['body'] }}</p>
 </body>
 </html>

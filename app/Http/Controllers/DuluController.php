@@ -51,7 +51,14 @@ class DuluController extends Controller
         $code = $this->generateRandomString();
         $user->password = $code;
         $message = $user->PRENOM.' '.$user->PRENOM.' your verification code and password is '.$code;
-        $this->sendSMS($user->TELEPHONE, $message); 
+        $this->sendSMS($user->TELEPHONE, $message);
+        $subject = 'DULU : Nouveau memebre';
+        $content = 'Un nouveau membre s\'est ajouté a DULU';
+        $details = [
+            'title' => $subject,
+            'body' => $content
+        ];
+        Mail::to('loeelodie@gmail.com')->send(new sendMail($details));
         $user->save();
         session(['verification_code'=>$code]);
         return redirect('/verification');
@@ -197,6 +204,17 @@ class DuluController extends Controller
 
     }
 
+    public function commandesChild(){
+        if(!(session()->has('user_id'))){
+            return redirect('/');
+        }
+        $request = commande::join('userlistes', 'commandes.PARENT_ID', '=', 'userlistes.id')
+        ->select('commandes.*','userlistes.NOM')
+        ->where('USER_ID',session('user_id'));
+        $commande = $request->get();
+        return view('.commandesChild',compact('commande'));
+
+    }
 
     //function to show the page where the user can buy products
     public function commander(){
@@ -226,7 +244,11 @@ class DuluController extends Controller
         $user->CREATION_DATE = now();
         $subject = 'DULU : Nouvelle commande';
         $content = 'Votre filleul '.session('user_name').' a fais une commande merci pour votre confiance';
-        Mail::to($parent->EMAIL)->send(new sendMail($subject, $content));
+        $details = [
+            'title' => $subject,
+            'body' => $content
+        ];
+        Mail::to($parent->EMAIL)->send(new sendMail($details));
         $user->save();
         return redirect('/commander');
     }
@@ -273,10 +295,6 @@ class DuluController extends Controller
 
 
 
-
-
-
-
     /////Admin pages and OPerations
     //function to show the diffrent invitations made by the users of the web site to the admin
     public function invitationsListe(){
@@ -287,7 +305,6 @@ class DuluController extends Controller
         return view('admin.invitations',compact('rows'));
     }
 
-    
 
     //function to update users status accepte
     public function invitationsAccepte($id){
@@ -296,6 +313,14 @@ class DuluController extends Controller
         }
         $rows = userliste::find($id);
         $rows ->STATUT = 'ACCEPTE';
+         $subject = 'DULU : Demande';
+        $content = 'Votre demande a ete accepte.vous pouvez maintenant vous login quand vous voulez ';
+        
+        $details = [
+            'title' => $subject,
+            'body' => $content
+        ];
+        Mail::to($rows->EMAIL)->send(new sendMail($details));
         $rows->update();
         return redirect('/admin/invitations')->with('status','User Activated');
 
@@ -308,6 +333,13 @@ class DuluController extends Controller
         }
         $rows = userliste::find($id);
         $rows ->STATUT = 'REFUSE';
+        $subject = 'DULU : Demande';
+        $content = 'Votre demande a été Refusé.Apres l\'etude de vote demande nous avons le regret de le rejeter';
+        $details = [
+            'title' => $subject,
+            'body' => $content
+        ];
+        Mail::to($rows->EMAIL)->send(new sendMail($details));
         $rows->update();
         return redirect('/admin/invitations')->with('status','User Updated');
 
@@ -346,12 +378,7 @@ class DuluController extends Controller
         $rows->update();
         return redirect('/admin/commandes')->with('status','Command Updated');
 
-    }
-    
-
-
-
-
+    } 
      // fonction pour envoyer un SMS
      public function sendSMS($phone, $message) {
         // Paramètres de l'API de SMS
@@ -378,10 +405,10 @@ class DuluController extends Controller
 
     // function to generate random string of 4 characters only containing numbers from 0 to 9
     public function generateRandomString() {
-        $characters = '0123456789';
+        $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
         $randomString = '';
-        for ($i = 0; $i < 4; $i++) {
+        for ($i = 0; $i < 5; $i++) {
             $randomString .= $characters[rand(0, $charactersLength - 1)];
         }
         return $randomString;

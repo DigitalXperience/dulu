@@ -40,7 +40,7 @@
                                                 </div>
                                             @endif 
 												<h2 class="white">Connexion</h2>
-                                                <form class="needs-validation" action="/login/registration" methode="get">
+                                                <form class="needs-validation" action="/login/registration" method="post">
                                                     @csrf
                                                     <div class="form-row">
                                                         <div class="col-md-4 mb-3">

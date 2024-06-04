@@ -2,10 +2,20 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Mail;
-
+use Illuminate\Contracts\Mail\Mailable;
 use App\Http\Controllers\DuluController;
 use App\Http\Controllers\TwilioSMSController;
+use App\Mail\sendMail;
 
+Route::get('/send-email', function () {
+    $details = [
+        'title' => 'Test Email',
+        'body' => 'This is a test email sent from your Laravel application.'
+    ];
+
+    Mail::to('loeelodie@gmail.com')->send(new sendMail($details));
+    return 'Email sent!';
+});
 
 /*
 |--------------------------------------------------------------------------
@@ -53,7 +63,7 @@ Route::get('/log',function () {
 
 
 //registraion operation
-Route::get('/login/registration', [DuluController::class,'registration']);
+Route::post('/login/registration', [DuluController::class,'registration']);
 
 //login code that is send after an account have been created verifications operations
 Route::post('/verifyCode', [DuluController::class,'verificationCode']);
@@ -71,6 +81,8 @@ Route::post('/admin/verification', [DuluController::class,'verificationAdmin']);
 Route::get('/accueil',[DuluController::class,'accueil']);
 Route::get('/commander', [DuluController::class,'commander']);
 Route::get('/mescommandes', [DuluController::class,'mescommandes']);
+Route::get('/commandesChild', [DuluController::class,'commandesChild']);
+
 Route::get('/invitations', [DuluController::class,'invitations']);
 Route::get('/arbre', [DuluController::class,'arbre']);
 Route::get('/parametres', [DuluController::class,'parametres']);

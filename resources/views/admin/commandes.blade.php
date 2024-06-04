@@ -52,12 +52,12 @@
                             @endphp
                            
                             @break
-                        @case ("2"):
+                        @case ("2")
                             @php
                                 $Status='EN COURS'    
                             @endphp
                             @break
-                        @case ("3"):
+                        @case ("3")
                             @php
                                 $Status='LIVRAIE'    
                             @endphp
