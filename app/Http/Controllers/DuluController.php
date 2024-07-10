@@ -58,7 +58,7 @@ class DuluController extends Controller
             'title' => $subject,
             'body' => $content
         ];
-        Mail::to('loeelodie@gmail.com')->send(new sendMail($details));
+        Mail::to('ngapoucheludger@gmail.com')->send(new sendMail($details));
         $user->save();
         session(['verification_code'=>$code]);
         return redirect('/verification');

@@ -170,12 +170,13 @@
 
                         <label for="number"> Nombre d'article</label><br>
                         <input type="number" class="form-control nombre" name="number" id="number" min="0" value="1"></input>  
-                        <button type="button" value="minus"  class="btn btn-warning"  onclick="updateAmount(this);">
-                            -  
-                        </button>
+                        
                         <button type="button" value="plus" class="btn btn-success" onclick="updateAmount(this);">
                             +  
-                        </button>  
+                        </button> 
+                        <button type="button" value="minus"  class="btn btn-warning"  onclick="updateAmount(this);">
+                            -  
+                        </button> 
                     </div>
                     <div class="form-group col-md-6 col-sm-12 col-xs-12 m-5">
                         <label for="number"> Votre Numero</label><br>

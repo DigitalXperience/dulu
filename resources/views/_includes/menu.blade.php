@@ -21,7 +21,7 @@
                         <i class="fa fa-star"></i>&nbsp; Upgrade</a>-->
                     <a class="navbar-item" href="/mescommandes">
                         <i class="fa fa-list"></i>&nbsp; Mes commandes</a>
-                        <a class="navbar-item" href="/mescommandes">
+                        <a class="navbar-item" href="/commandesChild">
                         <i class="fa fa-shopping-cart"></i>
                         </i>&nbsp; Mes Commandes Fils</a>
                     <a class="navbar-item <?php if(basename($_SERVER['PHP_SELF']) == 'parametres') echo "is-active"; ?>" href="/parametres">
