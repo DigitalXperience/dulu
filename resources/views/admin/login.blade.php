@@ -28,9 +28,9 @@
 						<div class="container-fluid">
 							<div class="row full-height-vh">
 								<div class="col-12 d-flex align-items-center justify-content-center">
-									<div class="card bg-degrade text-center width-800" style="background-image: linear-gradient(180deg, #35FFBD, #0B888E);">
+									<div class="card bg-degrade text-center width-800" >
 										<div class="card-img overlap">
-											<img alt="element 06" class="mb-1" src="{{asset('assets/img/logo2.png')}}" width="190">
+											<img alt="element 06" class="mb-1" src="{{asset('assets/img/gulu_logo.png')}}" width="190">
 										</div>
 										<div class="card-body">
 											<div class="card-block">    
