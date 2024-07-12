@@ -18,6 +18,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/vendors/css/prism.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/app.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}">
+    
 </head>
 <body data-col="1-column" class=" 1-column  blank-page blank-page">
     <div class="wrapper login-page">
@@ -30,7 +31,7 @@
 								<div class="col-12 d-flex align-items-center justify-content-center">
 									<div class="card bg-degrade text-center width-800">
 										<div class="card-img overlap">
-											<img alt="element 06" class="mb-1" src="{{asset('assets/img/logo2.png')}}" width="190">
+											<img alt="dulu wear" class="mb-1 mt-5" src="{{asset('assets/img/gulu_logo.png')}}" width="150">
 										</div>
 										<div class="card-body">
 											<div class="card-block">   
@@ -43,20 +44,16 @@
                                                 <form class="needs-validation" action="/login/registration" method="post">
                                                     @csrf
                                                     <div class="form-row">
-                                                        <div class="col-md-4 mb-3">
+                                                        <input type="hidden" class="form-control" id="parent_id" name="parent_id" value="{{$_POST['parent_id']}}" readonly="readonly">
+                                                        
+                                                        <div class="col-md-6 mb-3">
                                                             <label for="validationTooltip01">Nom</label>
                                                             <input type="text" class="form-control" id="new_user_nom" name="new_user_nom" placeholder="Votre nom" required>
                                                         </div>
                                                         
-                                                        <div class="col-md-4 mb-3">
+                                                        <div class="col-md-6 mb-3">
                                                             <label for="validationTooltip02">Prenom</label>
                                                             <input type="text" class="form-control" id="new_user_prenom" name="new_user_prenom" placeholder="Votre prenom" required>
-                                                            
-                                                        </div>
-                                                        <div class="col-md-4 mb-3">
-                                                            <label for="validationTooltip01">Parent Indentification</label>
-                                                            <input type="text" class="form-control" id="parent_id" name="parent_id" value="{{$_POST['parent_id']}}" readonly="readonly">
-                                                            
                                                         </div>
                                                     </div>
                                                     <div class="form-row">
