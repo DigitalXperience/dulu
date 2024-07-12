@@ -1,5 +1,5 @@
 <nav class="navbar topNav">
-        <div class="contain">
+        <div class="container">
             <div class="navbar-brand">
                 <a class="navbar-item" href="{{asset('https://ericmkelley.com')}}">
                     MyDULU WEAR
