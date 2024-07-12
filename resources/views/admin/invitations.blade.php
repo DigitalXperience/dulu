@@ -9,8 +9,8 @@
 <link rel="stylesheet" href="{{asset('https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css')}}">
 <link rel='stylesheet' href='{{asset('https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css')}}'>
 <link rel="stylesheet" href="{{asset('assets/css/dulu_member_style.css')}}">
-
 <link rel="stylesheet" href="{{asset('assets/css/invitations.css')}}">
+<link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
 
 </head>
 <body>
@@ -37,6 +37,7 @@
             
             <table id="table">
                 <tr>
+                    <th><input type="checkbox" id="selectAll"></th>
                   <th>Membre</th>
                   <th>Date</th>
                   <th>Status</th>
@@ -47,6 +48,7 @@
                     @endphp
                     @foreach ($rows as $user )
                         <tr>
+                            <td><input type="checkbox" class="user-checkbox" value="{{ $user->id }}"></td>
                             <td>{{$user->NOM}} {{$user->PRENOM}}</td>
                             <td>{{$user->created_at}}</td>
                             <td>{{$user->STATUT}}</td>
@@ -65,7 +67,11 @@
                         </tr>
                     @endforeach
             </table>
-            {{ $rows->links('pagination::bootstrap-4') }}
+            <!-- Pagination -->
+            <div class="d-flex justify-content-center mt-5">
+                {!! $rows->links() !!}
+            </div>
+
         </div>
     </div>
 </body>
@@ -85,6 +91,28 @@
         }
     }
         
+    </script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.6/dist/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+            $('#selectAll').click(function() {
+                $('input:checkbox').not(this).prop('checked', this.checked);
+            });
+
+            $('#addToCart').click(function() {
+                var selectedUsers = [];
+                $('.user-checkbox:checked').each(function() {
+                    selectedUsers.push($(this).val());
+                });
+
+                // Send the selected product IDs to the server using AJAX or form submission
+                console.log(selectedUsers);
+            });
+        });
     </script>
 </body>
 </html>

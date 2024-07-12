@@ -301,7 +301,7 @@ class DuluController extends Controller
         if(!(session()->has('user_id'))){
             return redirect('/');
         }
-        $rows = userliste::paginate(15);
+        $rows = userliste::paginate(5);
         return view('admin.invitations',compact('rows'));
     }
 

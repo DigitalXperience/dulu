@@ -1,33 +1,38 @@
-<?php 
-//cho basename($_SERVER['PHP_SELF']);
 
-?>
-
-<nav class="navbar shadow">
-        <div class="container">
-            <div class="navbar-menu">
-                <div class="navbar-start bottomNav ">
-                    <a class="navbar-item <?php if(basename($_SERVER['PHP_SELF']) == 'accueil') echo "is-active"; ?>" href="accueil">
-                        <i class="fa fa-tachometer-alt"></i>&nbsp; Tableau de Bord</a>
-                    <a class="navbar-item <?php if(basename($_SERVER['PHP_SELF']) == 'invitations') echo "is-active"; ?>" href="invitations">
-                        <i class="fa fa-list"></i>&nbsp; Invitations</a>
-                    <!-- <a class="navbar-item" href="#">
-                        <i class="fa fa-shopping-cart"></i>
-                        </i>&nbsp; Commander</a> -->
-                    <a class="navbar-item <?php if(basename($_SERVER['PHP_SELF']) == 'arbre') echo "is-active"; ?>" href="arbre">
-                        <i class="fa fa-shopping-cart"></i>
-                        </i>&nbsp; Mon Arbre</a>
-                    <!--<a class="navbar-item" href="#">
-                        <i class="fa fa-star"></i>&nbsp; Upgrade</a>-->
-                    <a class="navbar-item" href="commandes">
-                        <i class="fa fa-list"></i>&nbsp; Les commandes</a>
-                    <!-- <a class="navbar-ite" href="admin/parametres">
-                        <i class="fa fa-cog"></i>&nbsp; Paramètres</a> -->
-                </div>
-                <div class="navbar-end">
-                    <a class="navbar-item" href="/logout">
-                        <i class="fa fa-sign-out"></i>&nbsp; Logout</a>
-                </div>
-            </div>
-        </div>
-    </nav>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #e3f2fd;">
+    
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse container" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item m-2 <?php if(basename($_SERVER['PHP_SELF']) == 'accueil') echo "active"; ?>">
+        <a class="nav-link" href="accueil">
+            <i class="fa fa-tachometer-alt"></i>&nbsp; Tableau de Bord
+        </a>
+      </li>
+      
+      <li class="nav-item m-2  <?php if(basename($_SERVER['PHP_SELF']) == 'invitations') echo "active"; ?>">
+        <a class="nav-link" href="invitations">
+            <i class="fa fa-list"></i>&nbsp; Invitations
+        </a>
+      </li>
+      <li class="nav-item m-2 <?php if(basename($_SERVER['PHP_SELF']) == 'arbre') echo "active"; ?>">
+        <a class="nav-link" href="arbre">
+            <i class="fa fa-shopping-cart"></i>
+                &nbsp; Mon Arbre
+        </a>
+      </li>
+      <li class="nav-item m-2">
+        <a class="nav-link" href="commandes">
+            <i class="fa fa-list"></i>&nbsp; Les commandes
+        </a>
+      </li>
+    </ul>
+    <span class="navbar-text">
+        <a class="nav-link" href="/logout">
+            <i class="fa fa-sign-out"></i>&nbsp; Logout
+        </a>
+    </span>
+  </div>
+</nav>
