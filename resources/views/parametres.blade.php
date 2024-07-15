@@ -37,67 +37,50 @@
         
             <h2 class="mt-5 mb-5">Profile Settings</h2>
             
-            <div class="row" style="height:100%">
-            <ul>
-                @foreach ($errors->all() as $error )
-                    <li class="alert alert-danger">
-                        {{$error}};
-                    </li>
-                @endforeach 
-            </ul>
+            <div class="row mb-5" style="height:100%">
+                <ul>
+                    @foreach ($errors->all() as $error )
+                        <li class="alert alert-danger">
+                            {{$error}};
+                        </li>
+                    @endforeach 
+                </ul>
                     
                 <div class="col-md-9">
                     <div class="container">
                         <form id="form" action="/parametres/action" method="post">
                         @csrf
                             <div class="form-group">
-
                                 <label for='nom'>Nom</label>
                                 <input type="text" class="form-control" id="nom" name="nom" value="{{$user->NOM}}">
-
                             </div>
-
                             <div class="form-group">
                                 <label for='prenom'>Prenom</label>
                                 <input type="text" class="form-control" id="prenom" name="prenom" value="{{$user->PRENOM}}">
                             </div>
-
                             <div class="form-group">
                                 <label for='email'>Email</label>
                                 <input type="email" class="form-control" id="email" name="email" value="{{$user->EMAIL}}">
-
                             </div>
                             <div class="form-group">
-
                                 <label for='number'>Numéro</label>
                                 <input type="number" class="form-control" id="number" name="number" value="{{$user->TELEPHONE}}">
-
                             </div>
                             <div class="form-group">
                                 <label for='mdp'>Mot de passe</label>
                                 <input type="password" class="form-control" id="mdp" name="mdp" required>
                             </div>
                             <div class="form-group">
-
                                 <label for='mdp_confirm'>confirme mot de passe</label>
                                 <input type="password" class="form-control" id="mdp_confirm" name="mdp_confirm" required>
-                                <span id="password-message"></span>
-
-
                             </div>
-
-                            <div class="row mt-5">
-                            
-                                <div class="col">
+                            <div class="row">      
+                                <div class="col-6">
                                     <button type="submit" class="btn btn-primary btn-block">Save Changes</button>
                                 </div>
-                                
-                                <div class="col">
-                                
-                                    <button type="button" class="btn btn-default btn-block">Cancel</button>
-                                
+                                <div class="col-6">
+                                    <button type="button" class="btn btn-warning btn-block">Cancel</button>
                                 </div>
-                            
                             </div>
 
                         </form>
@@ -131,16 +114,6 @@
     // Get the button element
     const button = document.getElementById('myButton');
     const form = document.getElementById('myForm');
-
-    // form.addEventListener('submit', function(event) {
-    // Check if the form is valid
-    // if (!form.checkValidity()) {
-        // Prevent the form from being submitted
-        // event.preventDefault();
-    // }
-    // });
-
-    // Add an event listener to the confirm password input
     confirmPasswordInput.addEventListener('input', function() {
     // Get the values of the password and confirm password fields
     const password = passwordInput.value;
@@ -150,7 +123,6 @@
     if (password === confirmPassword) {
         passwordMessage.textContent = 'Passwords match';
         passwordMessage.style.color = 'green';
-        // Add an event listener to the form's submit event
         form.addEventListener('submit', function(event) {
         // Check if the form is valid
         if (!form.checkValidity()) {
