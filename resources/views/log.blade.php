@@ -30,7 +30,7 @@
 								<div class="col-12 d-flex align-items-center justify-content-center">
 									<div class="card bg-degrade text-center width-500">
 										<div class="card-img overlap">
-											<img alt="element 06" class="mb-1" src="{{asset('assets/img/logo2.png')}}" width="190">
+											<img alt="element 06" class="mb-1" src="{{asset('assets/img/gulu_logo.png')}}" width="190">
 										</div>
 										<div class="card-body">
 											<div class="card-block">    

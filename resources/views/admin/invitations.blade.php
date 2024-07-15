@@ -28,7 +28,7 @@
                         {{session('status')}}   
                     </div>
                 @endif
-                <h2>Suivie les invitations</h2>
+                <h2>Suivie des invitations</h2>
                 <!--    <p>Vous pouvez envoyer des invitations aussi</p> -->
             </div>
             

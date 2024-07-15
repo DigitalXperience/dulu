@@ -2,35 +2,55 @@
 //cho basename($_SERVER['PHP_SELF']);
 
 ?>
-
-<nav class="navbar shadow">
-        <div class="container">
-            <div class="navbar-menu">
-                <div class="navbar-start bottomNav ">
-                    <a class="navbar-item <?php if(basename($_SERVER['PHP_SELF']) == 'accueil') echo "is-active"; ?>" href="/accueil">
-                        <i class="fa fa-tachometer-alt"></i>&nbsp; Tableau de Bord</a>
-                    <a class="navbar-item <?php if(basename($_SERVER['PHP_SELF']) == 'invitations') echo "is-active"; ?>" href="/invitations">
-                        <i class="fa fa-list"></i>&nbsp; Invitations</a>
-                    <a class="navbar-item" href="/commander">
-                        <i class="fa fa-shopping-cart"></i>
-                        </i>&nbsp; Commander</a>
-                    <a class="navbar-item <?php if(basename($_SERVER['PHP_SELF']) == 'arbre') echo "is-active"; ?>" href="/arbre">
-                        <i class="fa fa-shopping-cart"></i>
-                        </i>&nbsp; Mon Arbre</a>
-                    <!--<a class="navbar-item" href="#">
-                        <i class="fa fa-star"></i>&nbsp; Upgrade</a>-->
-                    <a class="navbar-item" href="/mescommandes">
-                        <i class="fa fa-list"></i>&nbsp; Mes commandes</a>
-                        <a class="navbar-item" href="/commandesChild">
-                        <i class="fa fa-shopping-cart"></i>
-                        </i>&nbsp; Mes Commandes Fils</a>
-                    <a class="navbar-item <?php if(basename($_SERVER['PHP_SELF']) == 'parametres') echo "is-active"; ?>" href="/parametres">
-                        <i class="fa fa-cog"></i>&nbsp; Paramètres</a>
-                </div>
-                <div class="navbar-end">
-                    <a class="navbar-item" href="/logout">
-                        <i class="fa fa-sign-out"></i>&nbsp; Logout</a>
-                </div>
-            </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav container">
+      <li class="nav-item <?php if(basename($_SERVER['PHP_SELF']) == 'accueil') echo "active"; ?>">
+        <a class="nav-link" href="/accueil">
+            <i class="fa fa-tachometer-alt"></i>&nbsp; Tableau de Bord
+        </a>
+      </li>
+      <li class="nav-item <?php if(basename($_SERVER['PHP_SELF']) == 'invitations') echo "active"; ?>">
+        <a class="nav-link" href="/invitations">
+            <i class="fa fa-list"></i>&nbsp; Invitations
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/commander">
+            <i class="fa fa-shopping-cart"></i>
+            </i>&nbsp; Commander
+        </a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Commandes
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="/mescommandes">
+                <i class="fa fa-list"></i>&nbsp; Mes commandes
+            </a>
+            <a class="dropdown-item" href="/commandesChild">
+                <i class="fa fa-shopping-cart"></i>
+                </i>&nbsp; Mes Commandes Fils
+            </a>
         </div>
-    </nav>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Compte
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="/logout">
+                <i class="fa fa-sign-out"></i>&nbsp; Logout
+            </a>
+            <a class="dropdown-item" href="/parametres">
+                <i class="fa fa-cog"></i>&nbsp; Paramètres
+            </a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
