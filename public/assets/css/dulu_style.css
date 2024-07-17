@@ -440,6 +440,7 @@ input[type="email"]:focus {
 
 @media (max-width: 865px) {
   .home {
+    display: block;
     grid-template-columns: 45% 50%;
     gap: 60px;
     padding: 130px 70px;
@@ -458,6 +459,7 @@ input[type="email"]:focus {
   }
 
   .users-color-container {
+    display: none;
     grid-area: userscolorcontainer;
   }
 
