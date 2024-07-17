@@ -5,95 +5,94 @@
 <title>MyDULU WEAR | Affronte la vie sec</title>
   <link rel='stylesheet' href="{{asset('assets/css/dulu_style.css')}}">
   <link rel="stylesheet" href="{{asset('/assets/css/tiny-slider.css')}}">
-<style>
-body {font-family: Arial, Helvetica, sans-serif;}
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    /* .home.main{
+        filter: blur(8px);
+      -webkit-filter: blur(8px);
+    } */
+    /* Full-width input fields */
+    input[type=text], input[type=password] {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      /* border: 1px solid #ccc; */
+      box-sizing: border-box;
+    }
 
+    /* Set a style for all buttons */
+    button {
+      background-color: #04AA6D;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+    }
 
+    button:hover {
+      opacity: 0.8;
+    }
 
-/* .home.main{
-    filter: blur(8px);
-  -webkit-filter: blur(8px);
-} */
-/* Full-width input fields */
-input[type=text], input[type=password] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  /* border: 1px solid #ccc; */
-  box-sizing: border-box;
-}
+    /* Extra styles for the cancel button */
+    .cancelbtn {
+      width: auto;
+      padding: 10px 18px;
+      background-color: #f44336;
+    }
 
-/* Set a style for all buttons */
-button {
-  background-color: #04AA6D;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-}
+    /* Center the image and position the close button */
+    .imgcontainer {
+      text-align: center;
+      margin: 24px 0 12px 0;
+      position: relative;
+    }
 
-button:hover {
-  opacity: 0.8;
-}
+    img.avatar {
+      width: 40%;
+      border-radius: 50%;
+    }
 
-/* Extra styles for the cancel button */
-.cancelbtn {
-  width: auto;
-  padding: 10px 18px;
-  background-color: #f44336;
-}
+    .container {
+      padding: 16px;
+    }
 
-/* Center the image and position the close button */
-.imgcontainer {
-  text-align: center;
-  margin: 24px 0 12px 0;
-  position: relative;
-}
+    span.psw {
+      float: right;
+      padding-top: 16px;
+    }
 
-img.avatar {
-  width: 40%;
-  border-radius: 50%;
-}
+    /* Add Zoom Animation */
+    .animate {
+      -webkit-animation: animatezoom 0.6s;
+      animation: animatezoom 0.6s
+    }
 
-.container {
-  padding: 16px;
-}
+    @-webkit-keyframes animatezoom {
+      from {-webkit-transform: scale(0)} 
+      to {-webkit-transform: scale(1)}
+    }
+      
+    @keyframes animatezoom {
+      from {transform: scale(0)} 
+      to {transform: scale(1)}
+    }
 
-span.psw {
-  float: right;
-  padding-top: 16px;
-}
-
-/* Add Zoom Animation */
-.animate {
-  -webkit-animation: animatezoom 0.6s;
-  animation: animatezoom 0.6s
-}
-
-@-webkit-keyframes animatezoom {
-  from {-webkit-transform: scale(0)} 
-  to {-webkit-transform: scale(1)}
-}
-  
-@keyframes animatezoom {
-  from {transform: scale(0)} 
-  to {transform: scale(1)}
-}
-
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-  span.psw {
-     display: block;
-     float: none;
-  }
-  .cancelbtn {
-     width: 100%;
-  }
-}
-</style>
+    /* Change styles for span and cancel button on extra small screens */
+    @media screen and (max-width: 300px) {
+      span.psw {
+        display: block;
+        float: none;
+      }
+      .cancelbtn {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
 <section class="home main">
