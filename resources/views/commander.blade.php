@@ -21,26 +21,6 @@
 <link rel="stylesheet" href="{{asset('assets/css/responsive.css')}}">
 <link rel="stylesheet" href="{{asset('assets/css/commande.css')}}">
 
-<style>
-    .number-input {
-      display: flex;
-      align-items: center;
-    }
-
-    .number-input button {
-      background-color: #f2f2f2;
-      border: none;
-      padding: 8px 12px;
-      cursor: pointer;
-    }
-
-    .number-input input {
-      width: 80px;
-      padding: 8px;
-      text-align: center;
-      border: 1px solid #ccc;
-    }
-  </style>
 
 </head>
 <body>
@@ -59,8 +39,8 @@
 						</div>
 					</div>
 				</div>
-				<div class="mb-5">
-                    <div class="best-product best-indicator row">
+				<div class="row mb-5">
+                    <div class="best-product best-indicator">
 						<!-- Start single product -->
                         <div class="col-md-6 col-sm-12 col-xs-12 mb-5">
 							<div class="row">
@@ -150,13 +130,7 @@
 						<!-- End single product -->
 		            </div>
 		        </div>
-                <!-- <div class="row">
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-						<div class="section-headline text-center">
-						    <button type="button" class="btn btn-primary">TOUT COMMANDER</button>
-						</div>
-					</div>
-				</div> -->
+                
 			</div>
 		</div>
         <!-- End Product Area Three -->
@@ -216,7 +190,7 @@
                 </form>
                 
             </div>
-        </div>
+        </div>   
     </div>
 </body>
 
@@ -225,10 +199,6 @@
 <!-- <script  src="{{asset('assets/js/script.js')}}"></script> -->
 <script  src="{{asset('assets/js/commande.js')}}"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.6/dist/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-
 
 </body>
 </html>

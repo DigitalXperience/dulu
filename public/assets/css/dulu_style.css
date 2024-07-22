@@ -440,10 +440,14 @@ input[type="email"]:focus {
 
 @media (max-width: 865px) {
   .home {
+    height: 110vh;
     display: block;
     grid-template-columns: 45% 50%;
     gap: 60px;
     padding: 130px 70px;
+  }
+  .navbar-end{
+    display: none;
   }
 }
 

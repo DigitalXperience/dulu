@@ -3,6 +3,8 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MyDULU WEAR | Affronte la vie sec</title>
+<link rel="shortcut icon" type="image/png" href="assets/img/gulu_logo.png">
+
   <link rel='stylesheet' href="{{asset('assets/css/dulu_style.css')}}">
   <link rel="stylesheet" href="{{asset('/assets/css/tiny-slider.css')}}">
 <style>

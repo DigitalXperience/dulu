@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>MyDULU WEAR | Affronte la vie sec</title>
-    <link rel="shortcut icon" type="image/png" href="assets/img/ico/logo.png">
+    <link rel="shortcut icon" type="image/png" href="assets/img/gulu_logo.png">
     <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900|Montserrat:300,400,500,600,700,800,900" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/fonts/feather/style.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/fonts/simple-line-icons/style.css')}}">

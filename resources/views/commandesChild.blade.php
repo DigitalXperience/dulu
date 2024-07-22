@@ -6,23 +6,20 @@
 <!DOCTYPE html>
 <html lang="en" >
 <head>
-  <meta charset="UTF-8">
-  <title>MyDULU WEAR - Invitations</title>
+<meta charset="UTF-8">
+<title>MyDULU WEAR - Invitations</title>
+<link rel="shortcut icon" type="image/png" href="assets/img/gulu_logo.png">
 
-  <link href="{{asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css')}}" rel="stylesheet" id="bootstrap-css">
-
+<link href="{{asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css')}}" rel="stylesheet" id="bootstrap-css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="{{asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')}}" />
 <link rel="stylesheet" href="{{asset('https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css')}}">
 <link rel='stylesheet' href='{{asset('https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css')}}'>
 <link rel="stylesheet" href="{{asset('assets/css/dulu_member_style.css')}}">
 <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
-
 <link rel="stylesheet" href="{{asset('assets/css/commande.css')}}">
-
 </head>
 <body>
-
     @include('_includes.topnav')
 
     @include('_includes.menu')
