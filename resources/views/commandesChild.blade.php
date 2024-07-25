@@ -3,26 +3,7 @@
 
 
 
-<!DOCTYPE html>
-<html lang="en" >
-<head>
-<meta charset="UTF-8">
-<title>MyDULU WEAR - Invitations</title>
-<link rel="shortcut icon" type="image/png" href="assets/img/gulu_logo.png">
-
-<link href="{{asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css')}}" rel="stylesheet" id="bootstrap-css">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="{{asset('assets/css/font-awesome.min.css')}}" />
-<link rel="stylesheet" href="{{asset('assets/css/reset.min.css')}}">
-<link rel='stylesheet' href='{{asset('assets/css/bulma.css')}}'>
-<link rel="stylesheet" href="{{asset('assets/css/dulu_member_style.css')}}">
-<link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
-<link rel="stylesheet" href="{{asset('assets/css/commande.css')}}">
-</head>
-<body>
-    @include('_includes.topnav')
-
-    @include('_includes.menu')
+@include('_includes.menu')
    
     <!-- partial:index.partial.html -->
     <div class="container2">

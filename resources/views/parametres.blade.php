@@ -1,22 +1,3 @@
-<!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>MyDULU WEAR - Paramètres</title>
-  <link rel="shortcut icon" type="image/png" href="assets/img/gulu_logo.png">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="{{asset('assets/css/font-awesome.min.css')}}" />
-<link rel="stylesheet" href="{{asset('assets/css/reset.min.css')}}">
-<link rel='stylesheet' href='{{asset('assets/css/bulma.css')}}'>
-<link rel="stylesheet" href="{{asset('assets/css/dulu_member_style.css')}}">
-<link rel="stylesheet" href="{{asset('assets/css/settings.css')}}">
-<link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
-
-
-</head>
-<body>
-    
-    @include('_includes.topnav')
 
     @include('_includes.menu')
     <div class="container main" style="padding-left:0px;">
