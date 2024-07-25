@@ -7,9 +7,9 @@
 
   <script src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js')}}"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="{{asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')}}" />
-<link rel="stylesheet" href="{{asset('https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css')}}">
-<link rel='stylesheet' href='{{asset('https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css')}}'>
+<link rel="stylesheet" href="{{asset('assets/css/font-awesome.min.css')}}" />
+<link rel="stylesheet" href="{{asset('assets/css/reset.min.css')}}">
+<link rel='stylesheet' href='{{asset('assets/css/bulma.css')}}'>
 <link rel="stylesheet" href="{{asset('assets/css/dulu_member_style.css')}}">
 <link rel="stylesheet" href="{{asset('assets/css/arbre.css')}}">
 

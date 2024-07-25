@@ -47,5 +47,6 @@ function copyToClipboard() {
       .catch((error) => {
         console.error('Failed to copy text: ', error);
       });
+      alert("Copied")
   }
   

@@ -16,14 +16,14 @@ modalHaut.addEventListener('click', () => {
     price.value = 15000;
     total.value = 15000;
     number.value = 1;
-    product_name.value = "HAUT";
+    product_name.value = "T-SHIRT";
     modal_1.style.display = 'block';
 });
 modalAutre.addEventListener('click', () => {
     price.value = 20000;
     total.value = 20000;
     number.value = 1;
-    product_name.value = "AUTRE";
+    product_name.value = "PAD";
     modal_1.style.display = 'block';
 });
 // Open Modal
@@ -37,7 +37,6 @@ window.addEventListener('click', e => {
 
 function updateAmount(that) {
     var total = document.getElementById('total');
-    
     var num = parseInt(number.value);
     var total = parseInt(total.value);
     if(that.value == "minus"){
@@ -54,5 +53,29 @@ function updateAmount(that) {
         price.value = prix;
     }
     number.value = num;
-    
+    return 0;
 }
+
+
+function increaseValue(event) {
+    event.preventDefault(); // Prevent the default form submission behavior
+    var total = document.getElementById('total');
+    var total = parseInt(total.value);
+    var value = parseInt(document.getElementById('number').value, 10);
+    value = isNaN(value) ? 0 : value;
+    value++;
+    document.getElementById('number').value = value;
+    prix = total * value;
+    price.value = prix;
+  }
+function decreaseValue(event) {
+    event.preventDefault(); // Prevent the default form submission behavior
+    var total = document.getElementById('total');
+    var total = parseInt(total.value);
+    var value = parseInt(document.getElementById('number').value, 10);
+    value = isNaN(value) ? 0 : value;
+    value--;
+    document.getElementById('number').value = value;
+    prix = total * value;
+    price.value = prix;
+  }

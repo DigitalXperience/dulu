@@ -198,7 +198,7 @@ class DuluController extends Controller
         if(!(session()->has('user_id'))){
             return redirect('/');
         }
-        $request = commande::where('USER_ID',session('user_id'));
+        $request = commande::orderBy("created_at","DESC")->where('USER_ID',session('user_id'));
         $commande = $request->get();
         return view('.mescommandes',compact('commande'));
 
@@ -225,7 +225,7 @@ class DuluController extends Controller
     }
 
      //saving commande
-     public function commandesaveHaut(Request $request){
+     public function commandeSave(Request $request){
         $request->validate([
             'telephone' => 'required',
             'number'  => 'required',
@@ -248,7 +248,7 @@ class DuluController extends Controller
             'title' => $subject,
             'body' => $content
         ];
-        Mail::to($parent->EMAIL)->send(new sendMail($details));
+        // Mail::to($parent->EMAIL)->send(new sendMail($details));
         $user->save();
         return redirect('/commander');
     }
@@ -301,11 +301,18 @@ class DuluController extends Controller
         if(!(session()->has('user_id'))){
             return redirect('/');
         }
-        $rows = userliste::paginate(5);
+        $rows = userliste::orderBy("created_at","DESC")->paginate(10);
         return view('admin.invitations',compact('rows'));
     }
 
-
+    public function arbreAdmin(){
+        if(!(session()->has('user_id'))){
+            return redirect('/');
+        }
+        $query =  userliste::where('PARENT_ID', session('user_id'));          
+        $rows = $query->get();
+        return view('admin.arbre',compact('rows'));
+    }
     //function to update users status accepte
     public function invitationsAccepte($id){
         if(session('user_id')==''){

@@ -93,7 +93,7 @@ Route::post('/parametres/action', [DuluController::class,'update']);
 
 
 //to save the user's command
-Route::post('/commande/saveHaut', [DuluController::class,'commandesaveHaut']);
+Route::post('/commande/saveHaut', [DuluController::class,'commandeSave']);
 
 
 
@@ -114,6 +114,7 @@ Route::get('/admin/refuser/{id}',[DuluController::class,'invitationsRefuser']);
 Route::get('/admin/commandes',[DuluController::class,'commandesListe']);
 Route::get('/admin/nextCommande/{id}',[DuluController::class,'nextCommande']);
 Route::get('/admin/stopCommande/{id}',[DuluController::class,'stopCommande']);
+Route::get('/admin/arbre', [DuluController::class,'arbreAdmin']);
 
 // Route::get('/sendMail',[Mail::to]);
 
