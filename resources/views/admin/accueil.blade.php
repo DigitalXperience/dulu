@@ -5,11 +5,11 @@
   <title>MyDULU WEAR - Dashboard</title>
   <script src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js')}}"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="{{asset('assets/css/font-awesome.min.css')}}" />
-<link rel="stylesheet" href="{{asset('assets/css/reset.min.css')}}">
-<link rel='stylesheet' href='{{asset('assets/css/bulma.css')}}'>
-<link rel="stylesheet" href="{{asset('assets/css/dulu_member_style.css')}}">
-<link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
+<link rel="stylesheet" href="{{asset('/assets/css/font-awesome.min.css')}}" />
+<link rel="stylesheet" href="{{asset('/assets/css/reset.min.css')}}">
+<link rel='stylesheet' href='{{asset('/assets/css/bulma.css')}}'>
+<link rel="stylesheet" href="{{asset('/assets/css/dulu_member_style.css')}}">
+<link rel="stylesheet" href="{{asset('/assets/css/bootstrap.min.css')}}">
 
 
 </head>
@@ -22,7 +22,7 @@
     <nav class="navbar topNav">
         <div class="container ">
             <div class="navbar-brand">
-                <a class="navbar-item" href="https://ericmkelley.com">
+                <a class="navbar-item" href="./accueil">
                     MyDULU WEAR
                 </a>
                 <div class="navbar-burger burger" data-target="">
@@ -147,11 +147,11 @@
 
 </html>
 <!-- partial -->
-  <script  src="{{asset('assets/js/script.js')}}"></script>
-  <script src="assets/js/jquery-3.5.1.min.js"></script>
-    <script src="assets/js/bootstrap.min.js" ></script>
-    <script src="assets/js/jquery-3.3.1.slim.min.js"></script>
-    <script src="assets/js/popper.min.js"></script>
+  <script  src="{{asset('/assets/js/script.js')}}"></script>
+  <script src="/assets/js/jquery-3.5.1.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js" ></script>
+    <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="/assets/js/popper.min.js"></script>
   
 
 </body>

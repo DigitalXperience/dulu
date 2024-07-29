@@ -120,7 +120,7 @@
                                 @break
                             @case ("3"):
                                 @php
-                                    $Status_child='LIVRAIE'    
+                                    $Status_child='LIVRÉE'    
                                 @endphp
                                 @break
                             @default

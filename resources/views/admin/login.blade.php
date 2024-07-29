@@ -9,15 +9,15 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>MyDULU WEAR | Affronte la vie sec</title>
-    <link rel="shortcut icon" type="image/png" href="assets/img/ico/logo.png">
+    <link rel="shortcut icon" type="image/png" href="/assets/img/ico/logo.png">
     <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900|Montserrat:300,400,500,600,700,800,900" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/fonts/feather/style.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/fonts/simple-line-icons/style.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/fonts/font-awesome/css/font-awesome.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/vendors/css/perfect-scrollbar.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/vendors/css/prism.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/app.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('/assets/fonts/feather/style.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('/assets/fonts/simple-line-icons/style.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('/assets/fonts/font-awesome/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('/assets/vendors/css/perfect-scrollbar.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('/assets/vendors/css/prism.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/app.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/style.css')}}">
 </head>
 <body data-col="1-column" class=" 1-column  blank-page blank-page">
     <div class="wrapper login-page">
@@ -30,7 +30,7 @@
 								<div class="col-12 d-flex align-items-center justify-content-center">
 									<div class="card bg-degrade text-center width-800" >
 										<div class="card-img overlap">
-											<img alt="element 06" class="mb-1" src="{{asset('assets/img/gulu_logo.png')}}" width="190">
+											<img alt="element 06" class="mb-1" src="{{asset('/assets/img/gulu_logo.png')}}" width="190">
 										</div>
 										<div class="card-body">
 											<div class="card-block">    
@@ -71,17 +71,17 @@
 			</div>
 		</div>
     </div>
-    <script src="{{asset('assets/vendors/js/core/jquery-3.2.1.min.js')}}" type="text/javascript"></script>
-    <script src="{{asset('assets/vendors/js/core/popper.min.js')}}" type="text/javascript"></script>
-    <script src="{{asset('assets/vendors/js/core/bootstrap.min.js')}}" type="text/javascript"></script>
-    <script src="{{asset('assets/vendors/js/perfect-scrollbar.jquery.min.js')}}" type="text/javascript"></script>
-    <script src="{{asset('assets/vendors/js/prism.min.js')}}" type="text/javascript"></script>
-    <script src="{{asset('assets/vendors/js/jquery.matchHeight-min.js')}}" type="text/javascript"></script>
-    <script src="{{asset('assets/vendors/js/screenfull.min.js')}}" type="text/javascript"></script>
-    <script src="{{asset('assets/vendors/js/pace/pace.min.js')}}" type="text/javascript"></script>
-    <script src="{{asset('assets/js/app-sidebar.js')}}" type="text/javascript"></script>
-    <script src="{{asset('assets/js/notification-sidebar.js')}}" type="text/javascript"></script>
-    <script src="{{asset('assets/js/customizer.js')}}" type="text/javascript"></script>
+    <script src="{{asset('/assets/vendors/js/core/jquery-3.2.1.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('/assets/vendors/js/core/popper.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('/assets/vendors/js/core/bootstrap.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('/assets/vendors/js/perfect-scrollbar.jquery.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('/assets/vendors/js/prism.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('/assets/vendors/js/jquery.matchHeight-min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('/assets/vendors/js/screenfull.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('/assets/vendors/js/pace/pace.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('/assets/js/app-sidebar.js')}}" type="text/javascript"></script>
+    <script src="{{asset('/assets/js/notification-sidebar.js')}}" type="text/javascript"></script>
+    <script src="{{asset('/assets/js/customizer.js')}}" type="text/javascript"></script>
 </body>
 
 <!-- Mirrored from localhost/youth/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 23 Jun 2018 12:04:15 GMT -->
