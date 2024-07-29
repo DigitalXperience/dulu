@@ -1,7 +1,7 @@
 <nav class="navbar topNav">
         <div class="container">
             <div class="navbar-brand">
-                <a class="navbar-item" href="{{asset('accueil')}}">
+                <a class="navbar-item" href="accueil">
                     MyDULU WEAR
                 </a>
                 <div class="navbar-burger burger" data-target="">

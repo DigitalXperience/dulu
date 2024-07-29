@@ -24,7 +24,7 @@
     <nav class="navbar topNav">
         <div class="container ">
             <div class="navbar-brand">
-                <a class="navbar-item" href="https://ericmkelley.com">
+                <a class="navbar-item" href="accueil">
                     MyDULU WEAR
                 </a>
                 <div class="navbar-burger burger" data-target="">
@@ -71,7 +71,7 @@
                                 @break
                             @case ("3"):
                                 @php
-                                    $Status_user='LIVRAIE'    
+                                    $Status_user='LIVRÉE'    
                                 @endphp
                                 @break
                             @default
@@ -82,9 +82,9 @@
 
 
                         <article class="media order shadow delivered">
-                            <figure class="media-left">
-                                <i class="fa fas-box"></i>
-                            </figure>
+                                <figure class="media-left">
+                                    <i class="fas fa-box"></i>
+                                </figure>
                             <div class="media-content">
                                 <div class="content">
                                     <p>
