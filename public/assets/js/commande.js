@@ -6,9 +6,6 @@ var price = document.getElementById('price');
 var total = document.getElementById('total');
 var product_name = document.getElementById('product_name');
 var number = document.getElementById('number');
-
-
-
 const modal_1 = document.getElementById('modal');
 const form = document.getElementById('form');
 
@@ -20,8 +17,8 @@ modalHaut.addEventListener('click', () => {
     modal_1.style.display = 'block';
 });
 modalAutre.addEventListener('click', () => {
-    price.value = 20000;
-    total.value = 20000;
+    price.value = 5000;
+    total.value = 5000;
     number.value = 1;
     product_name.value = "PAD";
     modal_1.style.display = 'block';

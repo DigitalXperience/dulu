@@ -182,8 +182,6 @@
             </div>
         </div>
         <br>
-        <span class="heading">Recent Orders</span>
-        <br>
         <div class="columns">
             <div class="column">
                 <div class="box">
@@ -197,9 +195,6 @@
             </div>
         </div>
     </div>
-</body>
-
-</html>
 <!-- partial -->
 <script src="assets/js/jquery-3.5.1.min.js"></script>
     <script src="assets/js/bootstrap.min.js" ></script>
@@ -209,47 +204,7 @@
   <script  src="{{asset('assets/js/script.js')}}"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   
-  <script>
-  const ctx = document.getElementById('orderChart');
-  const ctx_1 = document.getElementById('ticketChart');
-
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-      datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
-  new Chart(ctx_1, {
-    type: 'line',
-    data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-      datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 25, 3],
-        borderWidth: 5
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
-</script>
+ 
 
 
 </body>

@@ -65,10 +65,10 @@
 							<div class="row">
 								<div class="col-md-6 col-sm-6">
 									<div class="single-product single-product-2">
-                                        <div class="single-product-img green">
+                                        <div class="single-product-img">
                                             <div class="product-img">
                                                 <a href="#">
-                                                    <img class="first-img" src="{{asset('assets/img/t_shirt_1.jpeg')}}" alt="" style="height: 202px;">
+                                                    <img class="first-img" src="{{asset('assets/img/t_shirt_1.jpeg')}}" alt="">
                                                 </a>
                                             </div>
 										</div>
@@ -109,7 +109,7 @@
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
                                     <div class="single-product single-product-2">
-                                        <div class="single-product-img blue">
+                                        <div class="single-product-img">
                                             <div class="product-img">
                                                 <a href="#">
                                                     <img class="first-img" src="{{asset('assets/img/pad_1.jpeg')}}"" alt="">
@@ -126,7 +126,7 @@
                                                 <a href="#">PAD</a>
                                             </h3>
                                             <div class="price-box">
-                                                <span class="new-price">20,000 FCFA</span>
+                                                <span class="new-price">5,000 FCFA</span>
                                             </div>
                                             <div class="pro-rating no-rating">
                                                 <a href="#"><i class="fa fa-star-o"></i></a>

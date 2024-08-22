@@ -49,99 +49,42 @@
     @include('.admin._includes-admin.menu')
 
     <div class="container">
-        <!-- <div class="columns">
+        <div class="columns">
             <div class="column is-12 main">
-                <span class="heading">Recentes Commandes</span>
-                <section id="order">
-                    <div class="order-body">
-                        <article class="media order shadow delivered">
-                            <figure class="media-left">
-                                <i class="fa fas-box"></i>
-                            </figure>
-                            <div class="media-content">
-                                <div class="content">
-                                    <p>
-                                        <strong>Package for John Smith Delivered</strong>
-                                        <br>
-                                        <small>Boston - West Palm Beach | Tracking ID:
-                                            <strong>90872373904439</strong>
-                                        </small>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="media-right">
-                                <div class="tags has-addons">
-                                    <span class="tag is-light">Status:</span>
-                                    <span class="tag is-delivered">Delivered</span>
-                                </div>
-                            </div>
-                        </article>
-                        <article class="media order shadow">
-                            <figure class="media-left">
-                                <i class="fas fa-box"></i>
-                            </figure>
-                            <div class="media-content">
-                                <div class="content">
-                                    <p>
-                                        <strong>Package for Jane Doe Dispatched</strong>
-                                        <br>
-                                        <small>Los Angeles - Shenzhen | Tracking ID:
-                                            <strong>937347947904439</strong>
-                                        </small>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="media-right">
-                                <div class="tags has-addons">
-                                    <span class="tag is-light">Status:</span>
-                                    <span class="tag is-success">In Transit</span>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-                </section>
                 <span class="heading">Stats</span>
                 <section class="info-tiles">
                     <div class="tile is-ancestor has-text-centered">
                         <div class="tile is-parent">
                             <article class="tile is-child box">
-                                <p class="title">8365</p>
-                                <p class="subtitle">Total Deliveries</p>
+                                <p class="title">{{$not_paid}}</p>
+                                <p class="subtitle">commission payée</p>
                             </article>
                         </div>
                         <div class="tile is-parent">
                             <article class="tile is-child box">
-                                <p class="title">2172</p>
-                                <p class="subtitle">Products</p>
+                                <p class="title">{{$paid}}</p>
+                              <p class="subtitle">commission a payer</p>
                             </article>
                         </div>
                         <div class="tile is-parent">
                             <article class="tile is-child box">
-                                <p class="title">24</p>
-                                <p class="subtitle">Open Orders</p>
+                                <p class="title">{{$commandes}}</p>
+                                <p class="subtitle">Commandes</p>
                             </article>
                         </div>
+                        <div class="tile is-parent">
+                            <article class="tile is-child box">
+                                <p class="title">{{$commandes_encours}}</p>
+                                <p class="subtitle">Commandes en cours</p>
+                            </article>
+                        </div>
+                       
                     </div>
                 </section>
-                <div class="columns">
-                </div>
-            </div>
-        </div> -->
-        <br>
-        <span class="heading">Recent Orders</span>
-        <br>
-        <div class="columns">
-            <div class="column">
-                <div class="box">
-                    <canvas id="orderChart"></canvas>
-                </div>
-            </div>
-            <div class="column">
-                <div class="box">
-                    <canvas id="ticketChart"></canvas>
-                </div>
+                
             </div>
         </div>
+        
     </div>
 </body>
 

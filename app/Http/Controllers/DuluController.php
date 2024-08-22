@@ -9,6 +9,7 @@ use App\Models\commande;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\sendMail;
+use Carbon\Carbon;
 use Illuminate\Contracts\Session\Session;
 use Exception;
 use Twilio\Rest\Client;
@@ -73,7 +74,7 @@ class DuluController extends Controller
             $verification = userliste::where("EMAIL",$request->input('user_nom'))->where("password",$request->input('password'));
             $admin = $verification->first();
             if($admin){
-                if($admin->STATUT == 'ACCEPTE'){
+                if($admin->STATUT == 'ACCEPTÉ'){
                 session(['user_parent_id'=>$admin->PARENT_ID]);
                 session(['user_telephone_number'=>$admin->TELEPHONE]);
                 session(['user_email'=>$admin->EMAIL]);
@@ -124,28 +125,6 @@ class DuluController extends Controller
 
     }
 
-
-    
-
-   /*  public function registrationVerification(){
-        return view('.registrationVerification');
-    }
-
-
-    public function registrationverificationaction(Request $request){
-        $request->validate([
-            'code_verification' => 'required',
-        ]);
-        if($request->code_verification == session('verification_code')){
-            return redirect('/accueil');
-        }else{
-            return view('.registrationVerification')->with('status','Wrong validation code');
-        }
-
-    } */
- 
-
-
     /////mamber pages and OPerations
 
     //member home page 
@@ -167,6 +146,7 @@ class DuluController extends Controller
                      ->join('userlistes', 'commandes.USER_ID', '=', 'userlistes.id')
                      ->select('commandes.*', 'userlistes.NOM')
                      ->where('commandes.PARENT_ID',session('user_id'))
+                     ->where('commandes.PARENT_ID','!=',session('user_id'))
                      ->orderByDesc('created_at')
                      ->first();
         return view('.accueil',compact('selectedRows','userCommande','childCommande','openRows','dilivadRows'));
@@ -178,7 +158,7 @@ class DuluController extends Controller
         if(session('user_id')==''){
             return redirect('/');
         }
-        $query =  userliste::where('PARENT_ID', session('user_id'));
+        $query =  userliste::orderBy("created_at","DESC")->where('PARENT_ID', session('user_id'));
             
         $rows = $query->get();
         return view('.invitations',compact('rows'));
@@ -210,7 +190,9 @@ class DuluController extends Controller
         }
         $request = commande::join('userlistes', 'commandes.PARENT_ID', '=', 'userlistes.id')
         ->select('commandes.*','userlistes.NOM')
-        ->where('USER_ID',session('user_id'));
+        ->where('USER_ID',session('user_id'))
+        ->where('commandes.PARENT_ID','!=',session('user_id'))
+        ->orderByDesc('created_at');
         $commande = $request->get();
         return view('.commandesChild',compact('commande'));
 
@@ -297,6 +279,40 @@ class DuluController extends Controller
 
     /////Admin pages and OPerations
     //function to show the diffrent invitations made by the users of the web site to the admin
+
+
+    public function indexAdmin(){
+        $not_paid = 0;
+        $paid = 0;
+        $gain_shirt = 4000;
+        $gain_pad = 1000;
+        $commandes_encours = commande::where('DILIVARY_STATUS','!=', '3')->where('DILIVARY_STATUS','!=', '0')->count();
+        $commandes = commande::count();
+        $commandes_fees = commande::where('created_at', '<=', Carbon::now()->subDays(15))->get();
+        $commandes_fees_paid = commande::where('created_at', '>', Carbon::now()->subDays(15))->get();
+        foreach($commandes_fees_paid as $commande){
+            if($commande->PRODUCT_NAME == "T-SHIRT"){
+                $total = $commande->PRODUCT_QUANTITY *$gain_shirt;
+                $paid += $total;
+
+            }
+            if($commande->PRODUCT_NAME == "PAD"){
+                $total = $commande->PRODUCT_QUANTITY * $gain_pad;
+                $paid  += $total;
+            }
+        }
+        foreach($commandes_fees as $commande){
+            if($commande->PRODUCT_NAME == "T-SHIRT"){
+                $total = $commande->PRODUCT_QUANTITY *$gain_shirt;
+                $not_paid += $total;
+            }
+            if($commande->PRODUCT_NAME == "PAD"){
+                $total = $commande->PRODUCT_QUANTITY * $gain_pad;
+                $not_paid += $total;
+            }
+        }
+        return view('admin.accueil',compact('commandes_encours','commandes','paid','not_paid'));
+    }
     public function invitationsListe(){
         if(!(session()->has('user_id'))){
             return redirect('/');
@@ -352,6 +368,7 @@ class DuluController extends Controller
 
     }
 
+
    //function to show the diffrent commandes made by the users of the web site to the admin
    public function commandesListe(){
     if(!(session()->has('user_id'))){
@@ -381,7 +398,7 @@ class DuluController extends Controller
             return redirect('/admin');
         }
         $rows = commande::find($id);
-        $rows ->DILIVARY_STATUS	 =0 ;
+        $rows ->DILIVARY_STATUS	 = 0 ;
         $rows->update();
         return redirect('/admin/commandes')->with('status','Command Updated');
 
@@ -427,29 +444,4 @@ class DuluController extends Controller
         $request->session()->flush();
         return redirect('/');
     }
-/*     public function sendSMS()
-    {
-        $receiverNumber = "+237659747733";
-        $message = "hello world c'est ludger";
-  
-        try {
-  
-            $account_sid = getenv("TWILIO_SID");
-            $auth_token = getenv("TWILIO_TOKEN");
-            $twilio_number = getenv("TWILIO_FROM");
-  
-            $client = new Client($account_sid, $auth_token);
-            $client->messages->create($receiverNumber, [
-                'from' => $twilio_number, 
-                'body' => $message]);
-  
-            dd('SMS Sent Successfully.');
-
-            
-  
-        } catch (Exception $e) {
-            dd("Error: ". $e->getMessage());
-        }
-        return redirect('/accueil');
-    }
- */}
+}

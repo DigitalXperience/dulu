@@ -35,7 +35,9 @@ Route::get('/send-email', function () {
 Route::get('/', function () {
     return view('.index');
 });
-
+Route::get('/location', function () {
+    return view('.geolocation');
+});
 
 //page to create account
 Route::post('/login',[DuluController::class,'login']);
@@ -104,9 +106,7 @@ Route::post('/registration/verification/action', [DuluController::class,'registr
 
 
 //// Routes for the admin pages
-Route::get('/admin/accueil',function () {
-    return view('admin.accueil');
-});
+Route::get('/admin/accueil',[DuluController::class,'indexAdmin']);
 Route::get('/admin/invitations',[DuluController::class,'invitationsListe']);
 Route::get('/admin/active/{id}',[DuluController::class,'invitationsAccepte']);
 Route::get('/admin/refuser/{id}',[DuluController::class,'invitationsRefuser']);
