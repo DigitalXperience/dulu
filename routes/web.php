@@ -7,16 +7,6 @@ use App\Http\Controllers\DuluController;
 use App\Http\Controllers\TwilioSMSController;
 use App\Mail\sendMail;
 
-Route::get('/send-email', function () {
-    $details = [
-        'title' => 'Test Email',
-        'body' => 'This is a test email sent from your Laravel application.'
-    ];
-
-    Mail::to('loeelodie@gmail.com')->send(new sendMail($details));
-    return 'Email sent!';
-});
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,7 +30,7 @@ Route::get('/location', function () {
 });
 
 //page to create account
-Route::post('/login',[DuluController::class,'login']);
+Route::get('/login',[DuluController::class,'login']);
 
 //page to verify the code that have been send
 Route::get('/verification', function () {
@@ -89,6 +79,9 @@ Route::get('/invitations', [DuluController::class,'invitations']);
 Route::get('/arbre', [DuluController::class,'arbre']);
 Route::get('/parametres', [DuluController::class,'parametres']);
 Route::post('/parametres/action', [DuluController::class,'update']);
+Route::get('/password', [DuluController::class,'password']);
+Route::post('/password/action', [DuluController::class,'newPassword']);
+
 
 
 

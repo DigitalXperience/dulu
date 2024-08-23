@@ -29,10 +29,10 @@ class DuluController extends Controller
 //function to create an account to web site
     public function registration(Request $request){
         $request->validate([
-            'new_user_nom' => 'required',
-            'new_user_prenom'  => 'required',
-            'new_user_email'  => 'required',
-            'new_user_telephone'  => 'required',
+            'new_user_nom' => 'required|unique:userlistes,NOM',
+            'new_user_prenom'  => 'required|unique:userlistes,PRENOM',
+            'new_user_email'  => 'required|unique:userlistes,EMAIL',
+            'new_user_telephone'  => 'required|unique:userlistes,TELEPHONE',
         ]);
 
         $existingEmail = userliste::where('EMAIL',$request->new_user_email)->count();
@@ -41,10 +41,10 @@ class DuluController extends Controller
         }
 
         $user = new userliste();
-        $user->NOM = "$request->new_user_nom";
-        $user->PARENT_ID = "$request->parent_id";
-        $user->PRENOM = "$request->new_user_prenom";
-        $user->EMAIL = "$request->new_user_email";
+        $user->NOM = $request->new_user_nom;
+        $user->PARENT_ID = $request->parent_id;
+        $user->PRENOM = $request->new_user_prenom;
+        $user->EMAIL = $request->new_user_email;
         $user->TELEPHONE = $request->new_user_telephone;
         $user->STATUT = "EN ATTENTE";
         $user->updated_at = now();
@@ -66,7 +66,27 @@ class DuluController extends Controller
 
     }
 
+    public function password(){
+        return view('password');
+    }
+    
 
+    public function newpassword(Request $request){
+        $request->validate([
+            'number' => 'required',
+        ]);
+        $user = userliste::where("TELEPHONE",$request->input('number'))->first();
+        if($user){
+            $code = $this->generateRandomString();
+            $user->password = $code;
+            $message = 'Votre mote de passe est: '.$code.' vous pouvez le modifier dans parametre';
+            $this->sendSMS($request->input('number'), $message);
+            $user->update();
+            return redirect('/log');
+        }else{
+            return redirect('/password')->with('status','Numero invalide'); 
+        }
+    }
     //function to login as member
     public function verification(Request $request){
         $user = userliste::where("EMAIL",$request->input('user_nom'))->first();

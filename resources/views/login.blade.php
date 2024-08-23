@@ -1,6 +1,13 @@
 
 
 
+@php
+    if(isset($_GET)){
+    $_SESSION['ref'] = $_GET['parent_id'];
+    $_SESSION['email']=$_GET['email_address'];
+    }
+@endphp
+
 <!DOCTYPE html>
 <html lang="en" class="loading">
 
@@ -35,16 +42,18 @@
 										</div>
 										<div class="card-body">
 											<div class="card-block">   
-                                            @if (session('status'))
-                                                <div id="stats" style="display: block; color: red;">
-                                                    {{session('status')}}   
-                                                </div>
-                                            @endif 
+                                                <ul>
+                                                    @foreach ($errors->all() as $error )
+                                                        <li class="alert alert-danger">
+                                                            {{$error}};
+                                                        </li>
+                                                    @endforeach 
+                                                </ul>
 												<h2 class="white">Connexion</h2>
                                                 <form class="needs-validation" action="/login/registration" method="post">
                                                     @csrf
                                                     <div class="form-row">
-                                                        <input type="hidden" class="form-control" id="parent_id" name="parent_id" value="{{$_POST['parent_id']}}" readonly="readonly">
+                                                        <input type="hidden" class="form-control" id="parent_id" name="parent_id" value="{{$_SESSION['ref']}}" readonly="readonly">
                                                         
                                                         <div class="col-md-6 mb-3">
                                                             <label for="validationTooltip01">Nom</label>
@@ -63,7 +72,7 @@
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
                                                             </div>
-                                                            <input type="text" class="form-control" id="new_user_email" name="new_user_email" value="{{$_POST['email_address']}}" aria-describedby="validationTooltipUsernamePrepend" required>
+                                                            <input type="text" class="form-control" id="new_user_email" name="new_user_email" value="{{$_SESSION['email']}}" aria-describedby="validationTooltipUsernamePrepend" required>
                                                             
                                                         </div>
                                                         </div>

@@ -47,9 +47,10 @@
         Dans un monde plein d'opportunités, avoir un mentor peut faire toute la différence. Découvrez pourquoi les gens se tournent vers cette ressource inestimable pour libérer leur potentiel. 
       </p>
 
-      <form id="form" action="/login" method="post">
+      <form id="form" action="/login" method="get">
         @csrf
         @if (isset($_GET['ref']))
+
           <input type="hidden" name="parent_id" id="parent_id" value="{{$_GET['ref']}}">
         @endif
         

@@ -55,6 +55,7 @@
                                                     </div>
                                                     <button class="btn btn-primary" type="submit">Submit</button>
                                                 </form>
+                                                <a href="/password">mot de passe oblié</a>
 											</div>
 										</div>
 									</div>
