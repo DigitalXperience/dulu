@@ -1,0 +1,42 @@
+.bg-degrade{
+ z-index: 99;
+}
+.login-page, body{
+	background: url('../img/bg-login.png') no-repeat;
+	background-size: cover;
+	/* filter: blur(8px);
+  	-webkit-filter: blur(8px); */
+	color: #666;
+}
+
+.logo  .img-responsive{
+	width: 180px;
+}
+.logo{
+	text-align: center;
+}
+h5, .h5 {
+    font-size: 1.15rem;
+}
+.primary {
+    color: #0E8B49 !important;
+}
+.danger {
+    color: #E31C23 !important;
+}
+.warning {
+    color: #FFD203 !important;
+}
+.badge-danger, .bg-danger, .main-content .wizard > .actions > ul > li > a[href="#previous"] {
+    background-color: #E31C23!important;
+}
+.badge-primary, .bg-primary, .btn-primary, .main-content .wizard > .actions > ul > li > a{
+    background-color: #0E8B49!important;
+}
+.badge-warning, .bg-warning {
+    background-color: #FFD203!important;
+}
+.main-panel {
+    max-height: unset;
+    height: unset;
+}
