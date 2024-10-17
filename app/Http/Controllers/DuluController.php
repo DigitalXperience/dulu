@@ -424,24 +424,11 @@ class DuluController extends Controller
 
     } 
      // fonction pour envoyer un SMS
-     public function sendSMS($phone, $message) {
-        // Paramètres de l'API de SMS
-        $login = "699124249";
-        $password2 = "as!69@81";
-        $sender_id = "Top";
-        $ext_id = "0123456";
-        $programmation = "0";
-        $message = 'Top ' . $message;
+     public function sendSMS($phone, $length = 4) {
         // Construire l'URL de l'API
-        $url = "https://sms.etech-keys.com/ss/api.php?";
-        $url .= "login=" . urlencode($login);
-        $url .= "&password=" . urlencode($password2);
-        $url .= "&sender_id=" . urlencode($sender_id);
-        $url .= "&destinataire=" . urlencode($phone);
-        $url .= "&message=" . urlencode($message);
-        $url .= "&ext_id=" . urlencode($ext_id);
-        $url .= "&programmation=" . urlencode($programmation);
-
+        $url = "https://digex.tech/coti/test.php?699124249";
+        $url .= "phone=+237" . urlencode($phone);
+        $url .= "&length=" . urlencode($length) ;
         $response = file_get_contents($url);
         // dd($url);
         return $response;
