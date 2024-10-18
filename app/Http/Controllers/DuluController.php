@@ -39,7 +39,7 @@ class DuluController extends Controller
         if($existingEmail > 0){
             return redirect('/login')->with('status','Existing email');
         }
-
+        $token = $this->sendSMS($request->input('number'));
         $user = new userliste();
         $user->NOM = $request->new_user_nom;
         $user->PARENT_ID = $request->parent_id;
@@ -49,10 +49,7 @@ class DuluController extends Controller
         $user->STATUT = "EN ATTENTE";
         $user->updated_at = now();
         $user->created_at  = now();
-        $code = $this->generateRandomString();
-        $user->password = $code;
-        $message = $user->PRENOM.' '.$user->PRENOM.' your verification code and password is '.$code;
-        $this->sendSMS($user->TELEPHONE);
+        $user->password = $token['token'];
         $subject = 'DULU : Nouveau memebre';
         $content = 'Un nouveau membre s\'est ajouté a DULU';
         $details = [
@@ -61,7 +58,7 @@ class DuluController extends Controller
         ];
         Mail::to('ngapoucheludger@gmail.com')->send(new sendMail($details));
         $user->save();
-        session(['verification_code'=>$code]);
+        session(['verification_code'=>$token['token']]);
         return redirect('/verification');
 
     }
@@ -76,7 +73,6 @@ class DuluController extends Controller
             'number' => 'required',
         ]);
         $user = userliste::where("TELEPHONE",$request->input('number'))->first();
-       
         if($user){
             $token = $this->sendSMS($request->input('number'));
             $user->password = $token['token'];
@@ -93,7 +89,7 @@ class DuluController extends Controller
             $verification = userliste::where("EMAIL",$request->input('user_nom'))->where("password",$request->input('password'));
             $admin = $verification->first();
             if($admin){
-                if($admin->STATUT == 'ACCEPTE'){
+                if($admin->STATUT == 'ACCEPTÉ'){
                 session(['user_parent_id'=>$admin->PARENT_ID]);
                 session(['user_telephone_number'=>$admin->TELEPHONE]);
                 session(['user_email'=>$admin->EMAIL]);
@@ -105,7 +101,6 @@ class DuluController extends Controller
                 }
             }else{
                 return redirect('/log')->with('status','Invalide password');
-
             }
         }else{
             return redirect('/log')->with('status','User not existing');
@@ -154,7 +149,6 @@ class DuluController extends Controller
         $selectedRows = commande::where('USER_ID', session('user_id'))->count();
         $dilivadRows = commande::where('USER_ID', session('user_id'))->where('DILIVARY_STATUS', '3')->count();
         $openRows = commande::where('USER_ID', session('user_id'))->where('DILIVARY_STATUS', '1')->count();
-        // Assuming you have a 'users' table and a 'posts' table
         $userCommande = DB::table('commandes')
                      ->join('userlistes', 'commandes.USER_ID', '=', 'userlistes.id')
                      ->select('commandes.*', 'userlistes.NOM')
@@ -226,7 +220,7 @@ class DuluController extends Controller
     }
 
      //saving commande
-     public function commandeSave(Request $request){
+    public function commandeSave(Request $request){
         $request->validate([
             'telephone' => 'required',
             'number'  => 'required',
@@ -309,6 +303,8 @@ class DuluController extends Controller
         $commandes = commande::count();
         $commandes_fees = commande::where('created_at', '<=', Carbon::now()->subDays(15))->get();
         $commandes_fees_paid = commande::where('created_at', '>', Carbon::now()->subDays(15))->get();
+
+        /* Evaluate the state */
         foreach($commandes_fees_paid as $commande){
             if($commande->PRODUCT_NAME == "T-SHIRT"){
                 $total = $commande->PRODUCT_QUANTITY *$gain_shirt;
@@ -348,15 +344,17 @@ class DuluController extends Controller
         $rows = $query->get();
         return view('admin.arbre',compact('rows'));
     }
+
+
     //function to update users status accepte
     public function invitationsAccepte($id){
         if(session('user_id')==''){
             return redirect('/admin');
         }
         $rows = userliste::find($id);
-        $rows ->STATUT = 'ACCEPTE';
+        $rows ->STATUT = 'ACCEPTÉ';
          $subject = 'DULU : Demande';
-        $content = 'Votre demande a ete accepte.vous pouvez maintenant vous login quand vous voulez ';
+        $content = 'Votre demande a étè accepté.vous pouvez maintenant vous login quand vous voulez ';
         
         $details = [
             'title' => $subject,
@@ -367,14 +365,14 @@ class DuluController extends Controller
         return redirect('/admin/invitations')->with('status','User Activated');
 
     }
-    //function to update users status refuse
 
+    //function to update users status refuse
     public function invitationsRefuser($id){
         if(session('user_id')==''){
             return redirect('/admin');
         }
         $rows = userliste::find($id);
-        $rows ->STATUT = 'REFUSE';
+        $rows ->STATUT = 'REFUSÉ';
         $subject = 'DULU : Demande';
         $content = 'Votre demande a été Refusé.Apres l\'etude de vote demande nous avons le regret de le rejeter';
         $details = [
@@ -384,21 +382,20 @@ class DuluController extends Controller
         Mail::to($rows->EMAIL)->send(new sendMail($details));
         $rows->update();
         return redirect('/admin/invitations')->with('status','User Updated');
-
     }
-
 
    //function to show the diffrent commandes made by the users of the web site to the admin
-   public function commandesListe(){
-    if(!(session()->has('user_id'))){
-        return redirect('/admin');
+    public function commandesListe(){
+        if(!(session()->has('user_id'))){
+            return redirect('/admin');
+        }
+        $commandes = commande::join('userlistes', 'commandes.USER_ID', '=', 'userlistes.id')
+                    ->select('commandes.*', 'userlistes.NOM')
+                    ->orderByDesc('created_at')
+                    ->get();
+        return view('admin.commandes',compact('commandes'));
     }
-    $commandes = commande::join('userlistes', 'commandes.USER_ID', '=', 'userlistes.id')
-                 ->select('commandes.*', 'userlistes.NOM')
-                 ->orderByDesc('created_at')
-                 ->get();
-    return view('admin.commandes',compact('commandes'));
-}
+
     ///change the situation of the divary
     public function nextCommande($id){
         if(session('user_id')==''){
@@ -422,6 +419,8 @@ class DuluController extends Controller
         return redirect('/admin/commandes')->with('status','Command Updated');
 
     } 
+
+
      // fonction pour envoyer un SMS
      public function sendSMS($phone, $length = 4) {
         // Construire l'URL de l'API
@@ -432,31 +431,15 @@ class DuluController extends Controller
         $context = stream_context_create([
             'http' => [
                 'header' => [
-                    "User-Agent: PHP", // Change this if necessary
-                    "Accept: application/json" // Or whatever format the API expects
+                    "User-Agent: PHP",
+                    "Accept: application/json" // format expected by the API 
                 ]
             ]
         ]);
         // Fetch the response using the context
         $response = file_get_contents($url, false, $context);
         $data = json_decode($response, true);
-        // dd($response);
-        
-
         return $data;
-    }
-
-
-
-    // function to generate random string of 4 characters only containing numbers from 0 to 9
-    public function generateRandomString() {
-        $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $charactersLength = strlen($characters);
-        $randomString = '';
-        for ($i = 0; $i < 5; $i++) {
-            $randomString .= $characters[rand(0, $charactersLength - 1)];
-        }
-        return $randomString;
     }
 
 

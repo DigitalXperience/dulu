@@ -29,7 +29,6 @@
                     </div>
                 @endif
                 <h2>Suivie des invitations</h2>
-                <!--    <p>Vous pouvez envoyer des invitations aussi</p> -->
             </div>
             
         </div>
@@ -38,7 +37,7 @@
             <table id="table">
                 <tr>
                     <th><input type="checkbox" id="selectAll"></th>
-                  <th>Membre</th>
+                  <th>Membres</th>
                   <th>Date</th>
                   <th>Status</th>
                   <th>Action</th>

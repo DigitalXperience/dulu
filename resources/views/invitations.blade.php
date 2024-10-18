@@ -36,7 +36,7 @@
         <div class="container-body">
             <table id="table">
                 <tr>
-                  <th>Membre</th>
+                  <th>Membres</th>
                   <th>Date</th>
                   <th>Status</th>
                 </tr>
