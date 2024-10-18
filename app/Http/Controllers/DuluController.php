@@ -52,7 +52,7 @@ class DuluController extends Controller
         $code = $this->generateRandomString();
         $user->password = $code;
         $message = $user->PRENOM.' '.$user->PRENOM.' your verification code and password is '.$code;
-        $this->sendSMS($user->TELEPHONE, $message);
+        $this->sendSMS($user->TELEPHONE);
         $subject = 'DULU : Nouveau memebre';
         $content = 'Un nouveau membre s\'est ajouté a DULU';
         $details = [
@@ -76,11 +76,10 @@ class DuluController extends Controller
             'number' => 'required',
         ]);
         $user = userliste::where("TELEPHONE",$request->input('number'))->first();
+       
         if($user){
-            $code = $this->generateRandomString();
-            $user->password = $code;
-            $message = 'Votre mote de passe est: '.$code.' vous pouvez le modifier dans parametre';
-            $this->sendSMS($request->input('number'), $message);
+            $token = $this->sendSMS($request->input('number'));
+            $user->password = $token['token'];
             $user->update();
             return redirect('/log');
         }else{
@@ -94,7 +93,7 @@ class DuluController extends Controller
             $verification = userliste::where("EMAIL",$request->input('user_nom'))->where("password",$request->input('password'));
             $admin = $verification->first();
             if($admin){
-                if($admin->STATUT == 'ACCEPTÉ'){
+                if($admin->STATUT == 'ACCEPTE'){
                 session(['user_parent_id'=>$admin->PARENT_ID]);
                 session(['user_telephone_number'=>$admin->TELEPHONE]);
                 session(['user_email'=>$admin->EMAIL]);
@@ -424,28 +423,29 @@ class DuluController extends Controller
 
     } 
      // fonction pour envoyer un SMS
-     public function sendSMS($phone, $message) {
-        // Paramètres de l'API de SMS
-        $login = "699124249";
-        $password2 = "as!69@81";
-        $sender_id = "Top";
-        $ext_id = "0123456";
-        $programmation = "0";
-        $message = 'Top ' . $message;
+     public function sendSMS($phone, $length = 4) {
         // Construire l'URL de l'API
-        $url = "https://sms.etech-keys.com/ss/api.php?";
-        $url .= "login=" . urlencode($login);
-        $url .= "&password=" . urlencode($password2);
-        $url .= "&sender_id=" . urlencode($sender_id);
-        $url .= "&destinataire=" . urlencode($phone);
-        $url .= "&message=" . urlencode($message);
-        $url .= "&ext_id=" . urlencode($ext_id);
-        $url .= "&programmation=" . urlencode($programmation);
+        $url = "https://digex.tech/coti/test.php?";
+        $url .= "phone=+237" . urlencode($phone) ;
+        $url.= "&length=" . urlencode($length);
+        // Create a stream context with custom headers
+        $context = stream_context_create([
+            'http' => [
+                'header' => [
+                    "User-Agent: PHP", // Change this if necessary
+                    "Accept: application/json" // Or whatever format the API expects
+                ]
+            ]
+        ]);
+        // Fetch the response using the context
+        $response = file_get_contents($url, false, $context);
+        $data = json_decode($response, true);
+        // dd($response);
+        
 
-        $response = file_get_contents($url);
-        // dd($url);
-        return $response;
+        return $data;
     }
+
 
 
     // function to generate random string of 4 characters only containing numbers from 0 to 9

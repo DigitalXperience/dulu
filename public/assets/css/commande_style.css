@@ -886,9 +886,7 @@ input:-moz-placeholder, textarea:-moz-placeholder {
     color: #F95329;
     font-size: 16px;
 }
-.no-rating a:first-child {
-    color: #252525;
-}
+
 .price-box {
     margin-top: 10px;
 }

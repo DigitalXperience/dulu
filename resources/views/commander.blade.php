@@ -92,10 +92,10 @@
 												<a href="#"><i class="fa fa-star-o"></i></a>
 											</div>
 											<div class="product-decs">
-                                                <p>When replacing a multi-lined selection of text, the generated dummy text maintains the amount of lines.</p>
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore amet minima et, inventore alias quo delectus molestiae ratione quia eaque.</p>
 											</div>
 											<div class="add-cart">
-												<button data-toggle="modal" data-target="#productModal" class="btn btn-warning" id="modalHaut" >COMMANDER</button>
+												<button data-toggle="modal" data-target="#productModal" class="btn btn-success font-weight-normal" id="modalHaut" >COMMANDER</button>
 											</div>
 										</div>
 									</div>
@@ -112,7 +112,7 @@
                                         <div class="single-product-img">
                                             <div class="product-img">
                                                 <a href="#">
-                                                    <img class="first-img" src="{{asset('assets/img/pad_1.jpeg')}}"" alt="">
+                                                    <img class="first-img" src="{{asset('assets/img/pad_1.jpeg')}}" alt="">
                                                 </a>
                                             </div>
                                         </div>
@@ -136,10 +136,10 @@
                                                 <a href="#"><i class="fa fa-star-o"></i></a>
                                             </div>
                                             <div class="product-decs">
-                                                <p>When replacing a multi-lined selection of text, the generated dummy text maintains the amount of lines.</p>
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa iste quod accusantium illum veniam perspiciatis labore vitae explicabo quaerat eveniet!</p>
                                             </div>
                                             <div class="add-cart">
-                                                <button data-toggle="modal" data-target="#productModal" class="btn btn-warning" id="modalAutre">COMMANDER</button>
+                                                <button data-toggle="modal" data-target="#productModal" class="btn btn-success font-weight-normal" id="modalAutre">COMMANDER</button>
                                             </div>
                                         </div>
                                     </div>

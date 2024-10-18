@@ -45,7 +45,7 @@
                                                     <div class="form-row">
                                                         <div class="col-md-12 mb-3">
                                                             <label for="number"><b>Entrez votre numero de telephone et vous aller recevoir sms</b></label>
-                                                            <input type="text" class="form-control" placeholder="Entrez votre Numero valide" name="number" required>
+                                                            <input type="text" class="form-control" placeholder="Entrez votre Numero valide (6 ** ** ** **)" name="number" required>
                                                         </div>
                                                     </div>
                                                     <button class="btn btn-primary" type="submit">Submit</button>
@@ -73,6 +73,4 @@
     <script src="{{asset('assets/js/notification-sidebar.js')}}" type="text/javascript"></script>
     <script src="{{asset('assets/js/customizer.js')}}" type="text/javascript"></script>
 </body>
-
-<!-- Mirrored from localhost/youth/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 23 Jun 2018 12:04:15 GMT -->
 </html>
