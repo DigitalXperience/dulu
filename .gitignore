@@ -5,6 +5,7 @@
 /storage/*.key
 /vendor
 .env
+.env_server
 .env.backup
 .env.production
 .phpunit.result.cache
@@ -17,5 +18,3 @@ yarn-error.log
 /.idea
 /.vscode
 
-secrets.json
-config/secrets.php
