@@ -25,9 +25,9 @@ use App\Mail\sendMail;
 Route::get('/', function () {
     return view('.index');
 });
-Route::get('/location', function () {
+/* Route::get('/location', function () {
     return view('.geolocation');
-});
+}); */
 
 //page to create account
 Route::get('/login',[DuluController::class,'login']);

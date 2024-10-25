@@ -92,7 +92,8 @@
 												<a href="#"><i class="fa fa-star-o"></i></a>
 											</div>
 											<div class="product-decs">
-                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore amet minima et, inventore alias quo delectus molestiae ratione quia eaque.</p>
+                                                <p> Légèreté et discrétion au quotidien. <br>
+                                                Conçu pour se glisser sous n’importe quelle tenue, ce col V ultra-léger et stretch reste totalement invisible. Sa coupe ajustée offre un confort absolu tout en maximisant l’efficacité des pads antitranspiration.</p>
 											</div>
 											<div class="add-cart">
 												<button data-toggle="modal" data-target="#productModal" class="btn btn-success font-weight-normal" id="modalHaut" >COMMANDER</button>
@@ -136,7 +137,8 @@
                                                 <a href="#"><i class="fa fa-star-o"></i></a>
                                             </div>
                                             <div class="product-decs">
-                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa iste quod accusantium illum veniam perspiciatis labore vitae explicabo quaerat eveniet!</p>
+                                                <p> L’arme secrète contre les auréoles. <br>
+                                                Facile à coller sous les aisselles du t-shirt MYDULU_WEAR, ce pad absorbe l’humidité à la source. Fini le stress des auréoles : restez au sec, peu importe la journée qui vous attend.</p>
                                             </div>
                                             <div class="add-cart">
                                                 <button data-toggle="modal" data-target="#productModal" class="btn btn-success font-weight-normal" id="modalAutre">COMMANDER</button>
